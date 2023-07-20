@@ -66,6 +66,9 @@ TECH - Kryteria przyjęcia projektu z JS
 9. Wszystkie obrazy są zoptymalizowane pod wyświetlacz retina
 10.  Mentor przeprowadził code review ostatecznej wersji projektu.
 
+Matryca w FIGMIE
+https://www.figma.com/file/ieXHCTVNre6afLNCW0cDFc/Filmoteka?type=design&node-id=0-1&mode=design&t=5OvvRh37vJ2PyWuf-0
+
 
 ----------------------------------------------------------------------
 Plan dla projektu JS
@@ -87,9 +90,9 @@ Zdobycie praktycznego doświadczenia pracy w zespole:
 -------
 Role:
 -------
-Team Lead. Monitoruje techniczną realizację projektu, odpowiada za jakość kodu, pisze code reviews i zadania projektowe dla członków zespołu. Jest właścicielem repozytorium dla projektu zespołowego.  Bezpośrednio komunikuje się z mentorem projektu w kwestiach, związanych z realizacją projektu i problemami, jakie pojawiają się w zespole.
-Scrum Master. Reguluje terminy wykonania projektu. Prowadzi codzienny Stand Up w celu zaplanowania pracy zespołu. Do przeprowadzenia Stand Up można wykorzystać Google Meet, Zoom, Skype, Discord. Monitoruje dostępność zadań dla wszystkich członków zespołu oraz terminy ich realizacji. Bezpośrednio komunikuje się z mentorem projektu w sprawach planowania i terminów wykonania projektu.
-Mentor Projektu. Jest mentorem podczas realizacji projektu. Zadaniem mentora projektu jest doradztwo w kwestiach, związanych z techniczną realizacją projektu, wyboru narzędzi, technologii i planowania pracy w projekcie. Mentor dokonuje również recenzji kodu projektu przed jego prezentacją.
+---> Team Lead. Monitoruje techniczną realizację projektu, odpowiada za jakość kodu, pisze code reviews i zadania projektowe dla członków zespołu. Jest właścicielem repozytorium dla projektu zespołowego.  Bezpośrednio komunikuje się z mentorem projektu w kwestiach, związanych z realizacją projektu i problemami, jakie pojawiają się w zespole.
+---> Scrum Master. Reguluje terminy wykonania projektu. Prowadzi codzienny Stand Up w celu zaplanowania pracy zespołu. Do przeprowadzenia Stand Up można wykorzystać Google Meet, Zoom, Skype, Discord. Monitoruje dostępność zadań dla wszystkich członków zespołu oraz terminy ich realizacji. Bezpośrednio komunikuje się z mentorem projektu w sprawach planowania i terminów wykonania projektu.
+---> Mentor Projektu. Jest mentorem podczas realizacji projektu. Zadaniem mentora projektu jest doradztwo w kwestiach, związanych z techniczną realizacją projektu, wyboru narzędzi, technologii i planowania pracy w projekcie. Mentor dokonuje również recenzji kodu projektu przed jego prezentacją.
 
 -------
 Dzień 1. Planowanie.
