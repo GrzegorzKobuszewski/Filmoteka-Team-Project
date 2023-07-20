@@ -1,5 +1,5 @@
 {
-  "name": "Filmoteka-Team-Project",
+  "name": "filmoteka-team-project",
   "version": "1.1.0",
   "description": "",
   "homepage": "https://GrzegorzKobuszewski.github.io/Filmoteka-Team-Project/",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/migace/parcel-project-template-pl-main.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Grzegorz Kobuszewski + [team]",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/migace/parcel-project-template-pl-main/issues"
