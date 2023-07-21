@@ -18,6 +18,10 @@
   "bugs": {
     "url": "https://github.com/migace/parcel-project-template-pl-main/issues"
   },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "notiflix": "^3.2.5"
+},
   "devDependencies": {
     "@parcel/transformer-sass": "^2.9.3",
     "parcel": "^2.8.3",
