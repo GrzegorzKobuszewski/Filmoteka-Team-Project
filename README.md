@@ -85,7 +85,7 @@ Zdobycie praktycznego doświadczenia pracy w zespole:
 - doświadczenie w pracy z Trello (https://trello.com/);
 - doświadczenie na stanowisku Team Lead zespołu;
 - doświadczenie na stanowisku Scrum Master zespołu;
-   - doświadczenie w prezentowaniu projektów.
+- doświadczenie w prezentowaniu projektów.
 
 -------
 Role:
@@ -136,3 +136,66 @@ Dzień 14. Prezentacja projektu.
 2. Team Lead dokonuje ostatecznego wdrożenia projektu.
 3. Zespół sprawdza ostateczną wersję projektu pod kątem błędów krytycznych.
 4. Prezentacja projektu odbywa się z udziałem przedstawiciela GoIT i wszystkich studentów kursu.
+
+----------------------------------------------------------------------
+Mail od Lidera - inicjacja projektu i pracy zespołu
+----------------------------------------------------------------------
+
+Drodzy!
+Postawiłem repo Naszego projektu. Zapraszam do kopiowania i pracy nad swoimi częściami ;)
+
+Zanim jeszcze zaczniecie pracę, pozwólcie, że dokładnie opiszę Wam co zrobiłem, żebyście widzieli, co i jak, bo nie wiem czy zdążę na jutrzejsze spotkanie - będę w trasie.
+
+Generalnie po ustawieniu repo na Githubie dodałem potrzebne pliki i foldery do szkieletu strony naszego projektu - wszystko zgodnie z makietą. Podpiąłem też fonty (czcionki) z Google i modern-normalize. 
+
+Stworzyłem też podstronę library.html, która różni się od index.html tylko nagłówkiem. Nagłówek też już jest podpięty pod te dwie strony (home i my library). Podobnie podpiąłem pod te 2 strony partiale html, główny plik ze stylami scss oraz główny z index.js.
+
+Gdyby coś jeszcze było potrzebne to śmiało dokładajcie, reszta będzie uzupełniana na bieżąco ;)
+
+Jest też kilka zasad, które chciałbym, żebyśmy w tym projekcie zastosowali. Część wynika bezpośrednio z wytycznych projektu, a część wprowadziłem dla lepszej czytelności. Oto one:
+
+1) OBRAZY
+Wszelkie obrazy, zdjęcia ikony i pliki svg wrzucamy do folderu "images" w folderze "src". Folder ma podfoldery tematyczne, więc warto z nich skorzystać. Pamiętajcie o optymalizacji pod wyświetlacz retina. 
+
+Dla osób, które będą robiły galerię wrzuciłem wstępnie (na roboczo) 6x jeden obrazek - możecie go wykorzystać do stylowania zarówno galerii, jak i modala dla różnych rozdzielczości. Potem go usuniemy, bo pewnie nie będzie potrzebny.
+
+2) PARTIALE (HTML)
+Dodałem pliki odpowiednio do podziału pracy w Naszym zespole. Na początku każdy w Was będzie mógł pracować na własnym pliku bez ryzyka konfliktów - przynajmniej na razie :)
+
+Generalnie nazwy są tam intuicyjne i spokojnie się połapiecie - a w razie potrzeby improwizujcie tworząc własne pliki - chociaż chyba na tę chwilę nie będziemy potrzebowali innych niż te, które już są. Starałem się wszystko dokładnie Wam rozpisać i zrobić ten układ niejako intuicyjny.
+
+Ścieżka naszych partiali html to po prostu: src --> partials
+
+Dałem też wstępne nazwy klas Waszych sekcji i/lub elementów znajdujących się w nich. Nazwy klas oczywiście będziecie tworzyć własne w ramach pracy nad Waszą częścią, ale te co już są zostawcie bez zmian, ponieważ część z nich ostylowałem, żeby zrobić kontener (klasa "container").
+
+3) PARTIALE (SCSS)
+Tutaj było najwięcej zabawy :)
+
+Przyznam, że trochę zastanawiałem się jak to uprościć, żeby nam się potem nie myliły te pliki i klasy, bo ich będzie najwięcej. I chyba fajnie to wymyśliłem, ale o szczegółach przeczytacie już sobie w samym pliku zbierającym wszystkie style, czyli "main.scss".
+
+Zapoznajcie się z plikiem "main.scss" (src --> sass --> main.scss), dałem w nim sporo komentarzy, jak będziemy dodawać i opisywać nowe pliki stylów.
+
+Dodałem tylko style bazowe (base_variables, base_reset, base_typography) - zobaczcie sobie do czego są i co jest w nich umieszczone. Korzystajcie z tych stałych - szczególnie w przypadku kolorów. A jak jakiś przeoczyłem to dodajcie zgodnie z przykładami.
+
+Ścieżka naszych partiali scss: src --> scss --> partials --> ...
+
+4) Pliki JS - na tę chwilę jest folder tylko z 3 plikami, ale można "dokładać" w miarę potrzeb i rozrastania się Naszej aplikacji ;)
+
+
+Aha, widziałem, że na Trello pojawiła się sugestia, żebym wszystko dobrze opisał, więc to robię - chociaż bez niej też bym tak pewnie zrobił ;)
+
+Ale też chyba widzicie i czujecie, że zupełnie inaczej przegląda, pracuje i rozumie się projekt, jak wszystko jest transparentnie poopisywane.
+
+Mam też nadzieję, że tym sposobem (opisywania wszystkiego, co robicie) będziecie wykonywać swoje części Naszego wspólnego projektu - dla wspólnej korzyści ;)
+
+
+Pamiętajcie też proszę o kilku ważnych "Kryteriach tech. przyjęcia projektu":
+1. Layout z trzema frakcjami (mobile, tablet, desktop), zgodnie z układem z FIGMY.
+2. Nazwy plików nie zawierają dużych liter i spacji, wyłącznie litery alfabetu angielskiego.
+3. Wszystkie zmienne nazywane są z użyciem camelCase, klasy z użyciem PascalCase, a stałe z użyciem UPPER_SNAKE_CASE.
+
+
+PS Pobierzcie sobie proszę repozytorium zgodnie z instrukcją od GoIt i dajcie mi znać czy wszystko jest ok, i czy uruchomiliście to repo... powinno wyglądać jak screen w załączniku ;)
+
+Powodzenia! :)
+

@@ -1,7 +1,54 @@
-/*
- * Główny plik dla stylów.
- * Wszystkie partials podłączamy tutaj.
- */
+// ------------------> GŁÓWNY PLIK DLA STYLÓW <------------------
 
-// Style dla pliku z przykładem HTML fragmentu
-@import './example';
+// Wszystkie partials podłączamy tutaj. 
+// Style dla pliku z przykładem HTML fragmentu:
+// @import './example';
+
+
+
+// ------------------> STYLE BAZOWE <------------------
+
+// Zmienne np. kolory, efekty przejścia, cieniowanie itp.
+@import '../sass/partials/base_variables';
+
+// Reset ustawień przeglądarki
+@import '../sass/partials/base_reset';
+
+// Topografia
+@import '../sass/partials/base_typography';
+
+
+
+// ------------------> STYLE SEKCJI (LAYOUT) <------------------
+
+// Główne style nagłówka
+@import '../sass/partials/layout_header';
+
+// Pomocnicze style dla poszczególnych elementów layoutu tworzymy w ten sposób: @import './sass/partials/layout_header_01';
+// U nas raczej Wam nie będzie to potrzebne (nie jest to złożony projekt), ale jeśli to tworzymy zgodnie z powyższym wzorem
+
+// Główne style galerii
+@import '../sass/partials/layout_gallery';
+
+// Główne style stopki
+@import '../sass/partials/layout_footer';
+
+// Główne style okna modalnego
+@import '../sass/partials/layout_modal';
+
+
+
+// ------------------> STYLE KOMPONENTÓW <------------------
+
+// Tutaj tworzymy style dla komponentów tj.: przyciski, ikony, paginacja (jako zbiór przycisków), spinery, przełączniki ect.
+// Nie jestem w stanie przewidzieć co jeszcze będzie Wam potrzebne, więc twórzcie proszę zgodnie z poniższymi szablonami
+
+// Przykładowo potrzebuję stylów dla przycisku w modalu to mogę zrobić coś takiego:
+
+// Style dla przycisku w modalu
+@import '../sass/partials/comp_btn_modal';
+
+// Style paginacji
+@import '../sass/partials/comp_pagination';
+
+
