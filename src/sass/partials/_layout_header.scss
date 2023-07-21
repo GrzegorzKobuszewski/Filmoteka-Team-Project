@@ -1,7 +1,26 @@
 .header{
-    background: url('../images/background.jpg');
+    background: url('../images/background-mobile.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 230px;
+
+
+
+@include tablet {
+    background: url('../images/background-tablet.jpg');
+    height: 216px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  }
+
+  @include desktop {
+    background: url('../images/background-desktop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+  }
 }
