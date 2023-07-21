@@ -1,0 +1,54 @@
+.movie-card {
+  max-width: 280px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movie-card__image {
+  border-radius: 5px;
+  width: 100%;
+}
+
+.movie-card__text {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  font-family: $main-font;
+}
+
+.movie-card__text--title {
+  color: $black;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.movie-card__text--info {
+  color: $orange;
+  line-height: 14px;
+}
+
+@media (min-width: 768px) {
+  .movie-card {
+    max-width: 336px;
+    gap: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-card {
+    max-width: 395px;
+    gap: 12px;
+  }
+
+  .movie-card__text {
+    font-size: 20px;
+    line-height: 2;
+  }
+
+  .movie-card__text--title {
+    font-size: 20px;
+  }
+}
