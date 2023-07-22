@@ -1,4 +1,35 @@
+footer {
+  background-color: $gray-footer-bg;
+}
 .footer {
-    color: $gray-footer-text;
-    background-color: $gray-footer-bg;
+  color: $gray-footer-text;
+  &__text {
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    &:first-child {
+      padding-top: 28.71px;
+      padding-bottom: 9.9px;
+    }
+    &:last-child {
+      padding-bottom: 29.7px;
+    }
+  }
+  &__icon {
+    fill: $orange;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  &__button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    text-decoration: underline;
+  }
 }
