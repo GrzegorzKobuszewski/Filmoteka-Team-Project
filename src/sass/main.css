@@ -84,6 +84,57 @@ img {
   height: 230px;
 }
 
+.movie-card {
+  max-width: 280px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movie-card__image {
+  border-radius: 5px;
+  width: 100%;
+}
+
+.movie-card__text {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+}
+
+.movie-card__text--title {
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.movie-card__text--info {
+  color: #FF6B08;
+  line-height: 14px;
+}
+
+@media (min-width: 768px) {
+  .movie-card {
+    max-width: 336px;
+    gap: 8px;
+  }
+}
+@media (min-width: 1024px) {
+  .movie-card {
+    max-width: 395px;
+    gap: 12px;
+  }
+  .movie-card__text {
+    font-size: 20px;
+    line-height: 2;
+  }
+  .movie-card__text--title {
+    font-size: 20px;
+  }
+}
 footer {
   background-color: #F7F7F7;
 }
@@ -160,4 +211,44 @@ footer {
   .footer__text:last-child {
     padding-bottom: 0px;
   }
+}
+.movie-card {
+  cursor: pointer;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */
