@@ -46,6 +46,9 @@
     max-width: 768px;
     margin: 39px auto 60px auto;
   }
+  .gallery_layout {
+    padding: 0;
+  }
   .gallery_movies {
     display: flex;
     flex-direction: row;
@@ -53,7 +56,6 @@
     width: 768px;
     column-gap: 30px;
     justify-content: center;
-    padding: 0;
   }
   .movie-card {
     max-width: 336px;
@@ -63,11 +65,14 @@
 
 @media (min-width: 1024px) {
   .gallery {
+    width: 100%;
     max-width: 1280px;
     margin: 40px auto 60px;
   }
   .gallery_movies {
-    width: 1280px;
+    min-width: 1024px;
+    width: 100%;
+    max-width: 1280px;
     column-gap: 16px;
   }
   .movie-card {
