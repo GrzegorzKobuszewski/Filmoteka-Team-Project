@@ -234,15 +234,18 @@ footer {
   border-radius: 1%;
   border: 1px solid #FF6B08;
   width: 80%; /* Could be more or less, depending on screen size */
+  position: relative;
 }
 .footer__close-btn {
-  color: #aaa;
-  float: rigth;
-  font-size: 80px;
+  color: #545454;
+  position: absolute;
+  font-size: 20px;
+  right: 20px;
+  top: 10px;
   font-weight: bold;
 }
 .footer__close-btn:hover, .footer__close-btn:focus {
-  color: black;
+  color: #FF6B08;
   text-decoration: none;
   cursor: pointer;
 }

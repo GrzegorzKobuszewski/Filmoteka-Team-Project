@@ -1,6 +1,6 @@
 const footerButton = document.querySelector('.footer__button');
 const footerModal = document.querySelector('.footer__modal');
-const footerCloseBtn = document.querySelector('#footer__close-btn');
+const footerCloseBtn = document.querySelector('.footer__close-btn');
 
 function openFooterModal() {
   footerModal.style.display = 'block';

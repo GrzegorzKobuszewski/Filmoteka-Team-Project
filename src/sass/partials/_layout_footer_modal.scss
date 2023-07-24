@@ -21,15 +21,18 @@
     border-radius: 1%;
     border: 1px solid $orange;
     width: 80%; /* Could be more or less, depending on screen size */
+    position: relative;
   }
   &__close-btn {
-    color: #aaa;
-    float: rigth;
-    font-size: 80px;
+    color: $gray-footer-text;
+    position: absolute;
+    font-size: 20px;
+    right: 20px;
+    top: 10px;
     font-weight: bold;
     &:hover,
     &:focus {
-      color: black;
+      color: $orange;
       text-decoration: none;
       cursor: pointer;
     }
