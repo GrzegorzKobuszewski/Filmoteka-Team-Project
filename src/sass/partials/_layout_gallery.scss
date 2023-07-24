@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-top: 20px;
 }
 
 .movie-card__image {
@@ -30,7 +31,30 @@
   line-height: 14px;
 }
 
-@media (min-width: 768px) {
+.gallery {
+  max-width: 320px;
+  display: flex;
+  margin: auto;
+}
+.gallery_movies {
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .gallery {
+    max-width: 768px;
+    margin: 39px auto 60px auto;
+  }
+  .gallery_movies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 768px;
+    column-gap: 30px;
+    justify-content: center;
+    padding: 0;
+  }
   .movie-card {
     max-width: 336px;
     gap: 8px;
@@ -38,6 +62,14 @@
 }
 
 @media (min-width: 1024px) {
+  .gallery {
+    max-width: 1280px;
+    margin: 40px 0 60px 0;
+  }
+  .gallery_movies {
+    width: 1280px;
+    column-gap: 16px;
+  }
   .movie-card {
     max-width: 395px;
     gap: 12px;
