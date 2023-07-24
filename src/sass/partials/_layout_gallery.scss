@@ -64,7 +64,7 @@
 @media (min-width: 1024px) {
   .gallery {
     max-width: 1280px;
-    margin: 40px 0 60px 0;
+    margin: 40px auto 60px;
   }
   .gallery_movies {
     width: 1280px;
@@ -72,6 +72,7 @@
   }
   .movie-card {
     max-width: 395px;
+    width: auto;
     gap: 12px;
   }
 
