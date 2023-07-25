@@ -1,3 +1,4 @@
+@import './../../node_modules/paginationjs/dist/pagination.css';
 :root {
   font-family: "Roboto", sans-serif;
 }
@@ -63,15 +64,15 @@ img {
   align-items: center;
   margin: 0 auto;
 }
-@media tablet and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
     padding: 0px 75px;
   }
 }
-@media desktop and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .container {
-    max-width: 1024px;
+    max-width: 1280px;
     padding: 0px 70px;
   }
 }
@@ -90,6 +91,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-top: 20px;
 }
 
 .movie-card__image {
@@ -116,15 +118,55 @@ img {
   line-height: 14px;
 }
 
-@media (min-width: 768px) {
+.gallery {
+  max-width: 320px;
+  display: flex;
+  margin: auto;
+}
+
+.gallery_movies {
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .gallery {
+    max-width: 768px;
+    margin: 39px auto 60px auto;
+  }
+  .gallery_layout {
+    padding: 0;
+  }
+  .gallery_movies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 768px;
+    -moz-column-gap: 30px;
+         column-gap: 30px;
+    justify-content: center;
+  }
   .movie-card {
     max-width: 336px;
     gap: 8px;
   }
 }
 @media (min-width: 1024px) {
+  .gallery {
+    width: 100%;
+    max-width: 1280px;
+    margin: 40px auto 60px;
+  }
+  .gallery_movies {
+    min-width: 1024px;
+    width: 100%;
+    max-width: 1280px;
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+  }
   .movie-card {
     max-width: 395px;
+    width: auto;
     gap: 12px;
   }
   .movie-card__text {
@@ -212,6 +254,70 @@ footer {
     padding-bottom: 0px;
   }
 }
+.footer__button {
+  cursor: pointer;
+}
+.footer__modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.footer__modal-content {
+  background-color: #F7F7F7;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border-radius: 1%;
+  border: 1px solid #FF6B08;
+  width: 80%; /* Could be more or less, depending on screen size */
+  position: relative;
+}
+.footer__close-btn {
+  color: #545454;
+  position: absolute;
+  font-size: 20px;
+  right: 20px;
+  top: 10px;
+  font-weight: bold;
+}
+.footer__close-btn:hover, .footer__close-btn:focus {
+  color: #FF6B08;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.authors {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+.authors__function {
+  color: #FF6B08;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.authors__function:first-child {
+  padding-top: 0px;
+}
+.authors__name {
+  padding-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .footer__modal-content {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .footer__modal-content {
+    width: 40%;
+  }
+}
 .movie-card {
   cursor: pointer;
 }
@@ -251,4 +357,8 @@ footer {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.paginationjs {
+  justify-content: center;
 }/*# sourceMappingURL=main.css.map */
