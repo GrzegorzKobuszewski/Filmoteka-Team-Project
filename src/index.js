@@ -1,6 +1,7 @@
 import './sass/main.scss';
 import './js/pagination';
 import './js/modal.js';
+import './js/footerModal.js';
 import './js/api';
 import { createMyMovieList, fetchTodayPopularMovies } from './js/api';
 
