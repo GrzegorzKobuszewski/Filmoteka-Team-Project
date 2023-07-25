@@ -1,3 +1,4 @@
+@import './../../node_modules/paginationjs/dist/pagination.css';
 :root {
   font-family: "Roboto", sans-serif;
 }
@@ -63,15 +64,15 @@ img {
   align-items: center;
   margin: 0 auto;
 }
-@media tablet and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
     padding: 0px 75px;
   }
 }
-@media desktop and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .container {
-    max-width: 1024px;
+    max-width: 1280px;
     padding: 0px 70px;
   }
 }
@@ -90,6 +91,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-top: 20px;
 }
 
 .movie-card__image {
@@ -116,15 +118,55 @@ img {
   line-height: 14px;
 }
 
-@media (min-width: 768px) {
+.gallery {
+  max-width: 320px;
+  display: flex;
+  margin: auto;
+}
+
+.gallery_movies {
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .gallery {
+    max-width: 768px;
+    margin: 39px auto 60px auto;
+  }
+  .gallery_layout {
+    padding: 0;
+  }
+  .gallery_movies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 768px;
+    -moz-column-gap: 30px;
+         column-gap: 30px;
+    justify-content: center;
+  }
   .movie-card {
     max-width: 336px;
     gap: 8px;
   }
 }
 @media (min-width: 1024px) {
+  .gallery {
+    width: 100%;
+    max-width: 1280px;
+    margin: 40px auto 60px;
+  }
+  .gallery_movies {
+    min-width: 1024px;
+    width: 100%;
+    max-width: 1280px;
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+  }
   .movie-card {
     max-width: 395px;
+    width: auto;
     gap: 12px;
   }
   .movie-card__text {
@@ -315,4 +357,8 @@ footer {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.paginationjs {
+  justify-content: center;
 }/*# sourceMappingURL=main.css.map */
