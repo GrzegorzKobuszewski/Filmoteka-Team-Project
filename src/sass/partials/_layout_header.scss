@@ -1,26 +1,94 @@
-.header{
-    background: url('../images/background-mobile.jpg');
-  background-size: cover;
+@import './base_variables';
+@import './base_typography';
+
+.header {
+  width: 100%;
+  background-image: url('../images/background.png');
   background-repeat: no-repeat;
-  background-position: center;
-  height: 230px;
-
-
-
-@include tablet {
-    background: url('../images/background-tablet.jpg');
-    height: 216px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  
+  background-size: 100% 100%;
+  padding-top: 50px;
+  padding-bottom: 55px;
+  color: $white;
+  &__main {
+    margin-bottom: 67px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &__name {
+      display: none;
+      font-size: 37,5
+    }
+  }
+  &__nav {
+    display: flex;
+    gap: 50px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    &__active {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        border-radius: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: $red;
+      }
+    }
   }
 
-  @include desktop {
-    background: url('../images/background-desktop.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  &__form {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto;
+    &__input {
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid $white;
+      padding: 0;
+      color: $white;
+      &::placeholder {
+        color: $white;
+      }
+    }
+    &__icon {
+      position: absolute;
+      right: 0;
     
+    }
+  }
+
+  
+}
+
+@media screen and (min-width:768px) {
+  .header {
+    &__main {
+      margin-bottom: 50px;
+    }
+    &__title {
+      &__name {
+        display: block;
+      }
+    }
+    &__form {
+      &__error {
+        margin-top: 25px;
+      }
+    }
+    &--library {
+      &__buttons {
+        padding-top: 0;
+      }
+    }
   }
 }
