@@ -1,10 +1,8 @@
 // ------------------> GŁÓWNY PLIK DLA STYLÓW <------------------
 
-// Wszystkie partials podłączamy tutaj. 
+// Wszystkie partials podłączamy tutaj.
 // Style dla pliku z przykładem HTML fragmentu:
 // @import './example';
-
-
 
 // ------------------> STYLE BAZOWE <------------------
 
@@ -16,8 +14,6 @@
 
 // Topografia
 @import '../sass/partials/base_typography';
-
-
 
 // ------------------> STYLE SEKCJI (LAYOUT) <------------------
 
@@ -32,11 +28,10 @@
 
 // Główne style stopki
 @import '../sass/partials/layout_footer';
+@import '../sass/partials/layout_footer_modal';
 
 // Główne style okna modalnego
 @import '../sass/partials/layout_modal';
-
-
 
 // ------------------> STYLE KOMPONENTÓW <------------------
 
@@ -51,4 +46,4 @@
 // Style paginacji
 @import '../sass/partials/comp_pagination';
 
-
+@import './../../node_modules/paginationjs/dist/pagination.css';
