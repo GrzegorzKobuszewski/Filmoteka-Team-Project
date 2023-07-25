@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel src/*.html",
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Filmoteka-Team-Project/"
+    "build": "parcel build src/*.html --public-url /Filmoteka-Team-Project/ --no-cache"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
     "@parcel/transformer-sass": "^2.8.3",
     "parcel": "^2.8.3",
     "posthtml-include": "^1.7.4"
+  },
+  "dependencies": {
+    "paginationjs": "^2.6.0"
   }
 }
