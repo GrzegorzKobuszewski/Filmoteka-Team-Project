@@ -2,11 +2,6 @@ const movieCard = document.querySelector('.movie-card');
 const modal = document.querySelector('.modal');
 const closeBtn = document.querySelector('#close-btn');
 
-window.onclick = function (e) {
-  if (e.target == modal) {
-    modal.style.display = 'none';
-  }
-};
 function openModal() {
   modal.style.display = 'block';
 }
@@ -15,3 +10,15 @@ function closeModal() {
 }
 movieCard.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
+
+window.onclick = function (e) {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+};
+
+window.onkeydown = function (e) {
+  if (e.key === 'Escape') {
+    modal.style.display = 'none';
+  }
+};

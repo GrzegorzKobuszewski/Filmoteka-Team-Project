@@ -22,7 +22,6 @@
 
 .modal-content {
   background-color: white;
-
   @media screen and (max-width: 767px) {
     padding-top: 48px;
     padding-left: 20px;
@@ -75,6 +74,7 @@
 
 .close-btn:hover {
   color: gray;
+  cursor: pointer;
 }
 
 .button {
@@ -126,6 +126,7 @@
 .add-btn:hover {
   background-color: #ff6b01;
   color: white;
+  cursor: pointer;
 }
 
 .film-title {
