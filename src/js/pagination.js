@@ -20,7 +20,7 @@ function getStartMovies() {
   fetch(urlStart, options)
     .then(res => res.json())
     .then(json => {
-      //console.log(json);
+      console.log(json);
       totalResults = json.total_results;
       // ograniczenie API do 10000 !!! - Zobacz dokumentację API
       if (totalResults > 10000) {
@@ -35,6 +35,8 @@ function getStartMovies() {
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
           genre: json.results[i - 1].genre_ids,
+          release: json.results[i - 1].release_date,
+          vote: json.results[i - 1].vote_average,
         };
       }
 
@@ -67,7 +69,9 @@ function getMovies(page) {
         moviesArray[20 * (page - 1) + i - 1] = {
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
-          //genre: json.results[i - 1].genre_ids,
+          genre: json.results[i - 1].genre_ids,
+          release: json.results[i - 1].release_date,
+          vote: json.results[i - 1].vote_average,
         };
       }
       isLoading = false;
@@ -128,12 +132,20 @@ function paginationInit() {
 
 //rysuj filmy w HTML:
 function template(data) {
-  let html = '';
+  let year = 1900;
+  let html = '<ul class="gallery_movies">';
   for (let i = 0; i < data.length; i++) {
-    html += `<div class="movie-page"> 
-    <img src=${data[i].poster} alt="Opis obrazu">
-    <p>${data[i].title}</p>
-    </div>`;
+    if (data[i].release != undefined) year = data[i].release.slice(0, 4); //musi być, bo slice przy undefined generuje bład;
+    html += `
+    <li class="movie-card">
+                    <img class="movie-card__image" src="${data[i].poster}" alt="${data[i].title}" loading="lazy"/>
+                    <div class="movie-card__text">
+                      <h2 class="movie-card__text--title">${data[i].title}</h2>
+                        <p class="movie-card__text--info">${data[i].genre} | ${year}</p>
+                        <p class="movie-card__text--vote">${data[i].vote}</p>
+                    </div>
+</li>
+`;
   }
-  return html;
+  return html + ' </ul>';
 }
