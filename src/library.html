@@ -1,24 +1,38 @@
-<div class="header">
-    <div class="container">
-      <div class="header__main">
-        <div class="header__title">
-          <svg class="header__title__logo" width="24" height="24">
-              <use href="/src/images/icons.svg#icon-film"></use>
-            </svg>
-            <h1 class="header__title__name">Filmoteka</h1>
-          </a>
-        </div>
-  
-        <nav class="header__nav">
-          <a href="./index.html" >HOME</a>
-          <a href="#" class="header__nav__active">MY LIBRARY</a>
-        </nav>
-      </div>
-      <form  class="header__form">
-        <input class="header__form__input" type="text" placeholder="Movie search" />
-        <svg class="header__form__icon" width="16" height="16">
-          <use href="/src/images/icons.svg#icon-search-2"></use>
-        </svg>
-      </form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <link rel="stylesheet" href="..\node_modules\paginationjs\dist\pagination.css" /> -->
+  </head>
+
+  <body>
+    <!-- W taki sposbu dodajemy fragmenty kodu w głównym pliku strony: -->
+    <!-- <include src="./partials/example.html"></include> -->
+    <div class="content">
+      <include src="./partials/header_library.html"></include>
+      <include src="./partials/modal.html"></include>
+      <include src="./partials/galerry_library.html"></include>
+      <include src="./partials/pagination.html"></include>
+      <include src="./partials/footer.html"></include>
+      <include src="./partials/footer_modal.html"></include>
     </div>
-  </div>
+
+    <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
