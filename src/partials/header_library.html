@@ -1,24 +1,27 @@
-<div class="header">
+<div class="header header--library">
   <div class="container">
     <div class="header__main">
       <div class="header__title">
-        <svg class="header__title__logo" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-film"></use>
+        <a href="./index.html">
+          <svg class="header__logo" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-film" href="./index.html"></use>
           </svg>
+        </a>
+        <a href="./index.html">
           <h1 class="header__title__name">Filmoteka</h1>
         </a>
       </div>
 
       <nav class="header__nav">
-        <a href="./index.html" >HOME</a>
+        <a href="./index.html">HOME</a>
         <a href="./library.html" class="header__nav__active">MY LIBRARY</a>
       </nav>
     </div>
-    <form  class="header__form">
-      <input class="header__form__input" type="text" placeholder="Movie search" />
-      <svg class="header__form__icon" width="16" height="16">
-        <use href="./images/icons.svg#icon-search-2"></use>
-      </svg>
-    </form>
+    
+    <div class="header--library__buttons">
+      <button  class="button button--library ">WATCHED</button>
+      <button  class="button button--library">QUEUE</button>
+    </div>
+    
   </div>
 </div>
