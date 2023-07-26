@@ -28,6 +28,7 @@ ul,
 ol {
   padding: 0;
   margin: 0;
+  list-style-type: none;
 }
 
 p {
@@ -78,13 +79,94 @@ img {
 }
 
 .header {
-  background: url("../images/background.jpg");
-  background-size: cover;
+  width: 100%;
+  background-image: url("../images/background.png");
   background-repeat: no-repeat;
-  background-position: center;
-  height: 230px;
+  background-size: 100% 100%;
+  padding-top: 50px;
+  padding-bottom: 55px;
+  color: #ffffff;
+}
+.header__main {
+  margin-bottom: 67px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+.header__title__name {
+  display: none;
+  font-size: 37, 5;
+}
+.header__nav {
+  display: flex;
+  gap: 50px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.header__nav__active {
+  position: relative;
+}
+.header__nav__active::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #FF001B;
+}
+.header__form {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.header__form__input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  padding: 0;
+  color: #ffffff;
+}
+.header__form__input:hover {
+  cursor: pointer;
+}
+.header__form__input::-moz-placeholder {
+  color: #ffffff;
+}
+.header__form__input::placeholder {
+  color: #ffffff;
+}
+.header__form__icon {
+  position: absolute;
+  right: 0;
+}
+.header__form__icon:hover {
+  cursor: pointer;
 }
 
+@media screen and (min-width: 768px) {
+  .header__main {
+    margin-bottom: 50px;
+  }
+  .header__title__name {
+    display: block;
+  }
+  .header__form__error {
+    margin-top: 25px;
+  }
+  .header--library__buttons {
+    padding-top: 0;
+  }
+}
 .movie-card {
   max-width: 280px;
   width: 100%;
