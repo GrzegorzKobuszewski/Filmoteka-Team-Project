@@ -133,16 +133,16 @@ function paginationInit() {
 //rysuj filmy w HTML:
 function template(data) {
   let year = 1900;
-  let html = '<ul>';
+  let html = '<ul class="gallery_movies">';
   for (let i = 0; i < data.length; i++) {
     if (data[i].release != undefined) year = data[i].release.slice(0, 4); //musi być, bo slice przy undefined generuje bład;
     html += `
     <li class="movie-card">
-                    <img class="movie-card_image" src="${data[i].poster}" alt="${data[i].title}" loading="lazy"/>
-                    <div class="movie-card_text">
-                      <h2 class="movie-card_text--title">${data[i].title}</h2>
-                        <p class="movie-card_text--info">${data[i].genre} | ${year}</p>
-                        <p class="movie-card_text--vote">${data[i].vote}</p>
+                    <img class="movie-card__image" src="${data[i].poster}" alt="${data[i].title}" loading="lazy"/>
+                    <div class="movie-card__text">
+                      <h2 class="movie-card__text--title">${data[i].title}</h2>
+                        <p class="movie-card__text--info">${data[i].genre} | ${year}</p>
+                        <p class="movie-card__text--vote">${data[i].vote}</p>
                     </div>
 </li>
 `;
