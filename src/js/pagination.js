@@ -1,7 +1,9 @@
 //Ustawienia wstępne / deklaracje ...
 import pagination from 'paginationjs';
-const url = 'https://api.themoviedb.org/3/movie/popular';
+import Notiflix from 'notiflix';
+const urlSearch = 'https://api.themoviedb.org/3/search/movie';
 const urlStart = 'https://api.themoviedb.org/3/movie/popular';
+let typeOfAPI = 'start';
 const options = {
   method: 'GET',
   headers: {
@@ -14,14 +16,27 @@ let moviesArray = []; // Tablica dla wszystkich filmów
 let moviesPerPage = 10;
 let totalResults = 1; //całkowita liczba wyników - filmów - max 10000 videos!!!
 let isLoading = false;
+let textToSearch = '';
 
-// pobierz totale i stwórz tablicę pustych obiektów
+// pobierz totale i stwórz tablicę pustych obiektów przy starcie strony
 function getStartMovies() {
-  fetch(urlStart, options)
+  let url = '';
+  if (typeOfAPI === 'start') url = urlStart;
+  if (typeOfAPI === 'search') url = `${urlSearch}?page=1&query=${textToSearch}`;
+
+  fetch(url, options)
     .then(res => res.json())
     .then(json => {
-      console.log(json);
+      //console.log(json);
       totalResults = json.total_results;
+      if (totalResults === 0) {
+        Notiflix.Notify.failure('Unfortunately, no movies were found!');
+        // //wyzeruj tablicę filmów
+        moviesArray = [];
+        totalResults = 0;
+        pagination.page = 1;
+        // debugger;
+      }
       // ograniczenie API do 10000 !!! - Zobacz dokumentację API
       if (totalResults > 10000) {
         totalResults = 10000;
@@ -30,7 +45,7 @@ function getStartMovies() {
         moviesArray.push(i);
       }
 
-      for (let i = 1; i <= 20; i++) {
+      for (let i = 1; i <= totalResults && i <= 20; i++) {
         moviesArray[i - 1] = {
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
@@ -45,6 +60,7 @@ function getStartMovies() {
     .catch(err => console.error('error:' + err));
 }
 
+//wyświetlanie galerii przy klikaniu w paginację i szukaniu filmów
 function getMovies(page) {
   if (page < 1) {
     page = 1;
@@ -52,20 +68,23 @@ function getMovies(page) {
   if (page > 500) {
     page = 500;
   }
+  let url = '';
+  if (typeOfAPI === 'start') url = `${urlStart}?page=${page}`;
+  if (typeOfAPI === 'search') url = `${urlSearch}?page=${page}&query=${textToSearch}`;
 
   isLoading = true;
 
-  fetch(`${url}?page=${page}`, options)
+  fetch(url, options)
     .then(res => {
-      console.log(`Jest FETCH page ${page}`);
+      //console.log(`Jest FETCH page ${page}`);
       return res.json();
     })
     .then(json => {
-      console.log(`Jest then po Fetch, page: ${page}`);
+      //console.log(`Jest then po Fetch, page: ${page}`);
 
       for (let i = 1; i <= json.results.length; i++) {
-        console.log(20 * (page - 1) + i - 1);
-        console.log(json.results[i - 1]);
+        //console.log(20 * (page - 1) + i - 1);
+        //console.log(json.results[i - 1]);
         moviesArray[20 * (page - 1) + i - 1] = {
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
@@ -110,7 +129,7 @@ function paginationInit() {
       }
     },
     callback: function (data, pagination) {
-      console.log(data);
+      //console.log(data);
       setTimeout(() => {
         //wylicz który element tablicy moviesArray
         // debugger;
@@ -123,9 +142,9 @@ function paginationInit() {
           setTimeout(() => {
             var html = template(moviesArray.slice(start, stop + 1));
             $('#data-container').html(html);
-          }, 1000);
+          }, 3000);
         }
-      }, 400);
+      }, 500);
     },
   });
 }
@@ -149,3 +168,28 @@ function template(data) {
   }
   return html + ' </ul>';
 }
+
+//wyszukiwanie filmu po wpisanym słowie kluczowym
+//nasłuchuj na kliknięcie,
+
+const formEl = document.querySelector('.header__form');
+const inputEl = document.querySelector('.header__form__input');
+
+formEl.addEventListener('submit', e => {
+  //sprawdź, czy w polu search nie ma tylko spacji...
+  // debugger;
+
+  // Notiflix.Notify.failure('P2lease enter a search query for the movie');
+
+  e.preventDefault();
+  // debugger;
+  // wyczyść tablicę filmów:
+  // debugger;
+  moviesArray = [];
+  // ustaw zmienną rodzaj API
+  typeOfAPI = 'search';
+  // ustaw zmienną do szukania po słowie
+  textToSearch = inputEl.value.trim();
+  // wyświetl galerię z wynikami szukania:
+  getStartMovies();
+});
