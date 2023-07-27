@@ -131,6 +131,23 @@ function paginationInit() {
   });
 }
 
+// const leftArrow = document.querySelector('.paginationjs-prev');
+// leftArrow.innerHTML = "";
+
+/* ;
+
+svg for left arrow:
+
+<svg class="paginationjs-arrow" width="16" height="16">
+// <use href="./images/pagination-arrows.svg#icon-arrow-left"></use>
+// </svg>
+
+svg for right arrow:
+
+<svg class="paginationjs-arrow" width="16" height="16">
+  <use href="./images/pagination-arrows.svg#icon-arrow-right"></use>
+</svg>; */
+
 //rysuj filmy w HTML:
 function template(data) {
   let year = 1900;

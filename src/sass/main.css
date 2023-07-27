@@ -121,7 +121,7 @@ img {
   border-radius: 2px;
   bottom: -2px;
   left: 0;
-  background-color: #FF001B;
+  background-color: #ff001b;
 }
 .header__form {
   position: relative;
@@ -196,7 +196,7 @@ img {
 }
 
 .movie-card__text--info {
-  color: #FF6B08;
+  color: #ff6b08;
   line-height: 14px;
 }
 
@@ -259,8 +259,49 @@ img {
     font-size: 20px;
   }
 }
+.movie-card {
+  cursor: pointer;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 footer {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .footer {
@@ -285,7 +326,7 @@ footer {
   padding-bottom: 29.7px;
 }
 .footer__icon {
-  fill: #FF6B08;
+  fill: #ff6b08;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -352,11 +393,11 @@ footer {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .footer__modal-content {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border-radius: 1%;
-  border: 1px solid #FF6B08;
+  border: 1px solid #ff6b08;
   width: 80%; /* Could be more or less, depending on screen size */
   position: relative;
 }
@@ -369,7 +410,7 @@ footer {
   font-weight: bold;
 }
 .footer__close-btn:hover, .footer__close-btn:focus {
-  color: #FF6B08;
+  color: #ff6b08;
   text-decoration: none;
   cursor: pointer;
 }
@@ -379,7 +420,7 @@ footer {
   font-family: "Roboto", sans-serif;
 }
 .authors__function {
-  color: #FF6B08;
+  color: #ff6b08;
   padding-bottom: 10px;
   padding-top: 10px;
 }
@@ -400,47 +441,6 @@ footer {
     width: 40%;
   }
 }
-.movie-card {
-  cursor: pointer;
-}
-
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close-btn {
-  color: #aaa;
-  float: right;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .paginationjs {
   display: flex;
   line-height: 1.33;
@@ -518,7 +518,7 @@ footer {
 }
 
 .paginationjs.paginationjs-theme-blue .paginationjs-pages li.active > a {
-  background: #FF6B08;
+  background: #ff6b08;
   color: #ffffff;
   border-radius: 5px;
   width: 40px;
@@ -528,7 +528,7 @@ footer {
 
 .paginationjs .paginationjs-pages li:first-child,
 .paginationjs .paginationjs-pages li:last-child {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   border-radius: 5px;
   width: 40px;
   height: 40px;
