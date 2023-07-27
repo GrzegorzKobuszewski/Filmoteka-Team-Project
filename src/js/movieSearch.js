@@ -13,7 +13,6 @@ searchFormEl.addEventListener('submit', e => {
     return Notiflix.Notify.failure('Please enter a search query for the movie');
 
   console.log(`user triggered search movie with value {${inputEl.value.trim()}}`);
-
   state.whatPaginated = 'search';
   // tutaj wypadaloby resetowac paginacje ktora byla np. z poprzedniego wyszukiwania
   state.query = inputEl.value.trim();
