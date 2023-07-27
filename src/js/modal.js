@@ -16,9 +16,3 @@ window.onclick = function (e) {
     modal.style.display = 'none';
   }
 };
-
-window.onkeydown = function (e) {
-  if (e.key === 'Escape') {
-    modal.style.display = 'none';
-  }
-};
