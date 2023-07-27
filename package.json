@@ -24,6 +24,7 @@
     "posthtml-include": "^1.7.4"
   },
   "dependencies": {
+    "notiflix": "^3.2.6",
     "paginationjs": "^2.6.0"
   }
 }
