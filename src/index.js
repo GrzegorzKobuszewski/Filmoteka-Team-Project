@@ -1,9 +1,10 @@
 import './sass/main.scss';
-import './js/pagination';
+import './js/pagination.js';
 import './js/modal.js';
 import './js/footerModal.js';
-import './js/api';
-import { createMyMovieList, fetchTodayPopularMovies } from './js/api';
+import './js/api.js';
+import { createMyMovieList, fetchTodayPopularMovies } from './js/api.js';
+import './js/buttonGoTop.js';
 
 //example of todayPopularMovies
 fetchTodayPopularMovies().then(response => {
