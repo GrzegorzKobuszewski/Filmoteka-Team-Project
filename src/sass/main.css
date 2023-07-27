@@ -461,7 +461,7 @@ footer {
   float: left;
 }
 
-ul {
+.paginationjs-pages ul {
   display: flex;
   gap: 16px;
   align-items: center;

@@ -10,6 +10,7 @@ const options = {
       'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MDc5M2YzM2IyY2RmNjAxMmUwZjE5MTQ2YTc1MDQxZCIsInN1YiI6IjY0YmFlZTFhNDM1MDExMDBjNzExMGNmYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jo-IqaDv0MIxcDvkX6ICfBTex8-DDD-e2pyktP9k_W4',
   },
 };
+
 let moviesArray = []; // Tablica dla wszystkich filmów
 let moviesPerPage = 10;
 let totalResults = 1; //całkowita liczba wyników - filmów - max 10000 videos!!!
