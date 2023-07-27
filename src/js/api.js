@@ -53,15 +53,6 @@ async function fetchTrailerById(id) {
   return data;
 }
 
-async function fetchGenres() {
-  const url = new URL(`${BASE_URL}/genre/movie/list`);
-  url.searchParams.append('api_key', API_KEY);
-
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.genres;
-}
-
 async function createMyMovieList(listName, listDescription, language) {
   const url = new URL(`${BASE_URL}/list`);
 
@@ -81,6 +72,15 @@ async function createMyMovieList(listName, listDescription, language) {
 
   const response = await fetch(url, options);
   return response;
+}
+
+async function fetchGenres() {
+  const url = new URL(`${BASE_URL}/genre/movie/list`);
+  url.searchParams.append('api_key', API_KEY);
+
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.genres;
 }
 
 export {
