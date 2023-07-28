@@ -1,3 +1,112 @@
+.emptyClass {
+  color: #000;
+}
+
 .paginationjs {
+  display: flex;
+  line-height: 1.33;
+  font-size: 12px;
+  font-weight: 500;
+  box-sizing: initial;
   justify-content: center;
+  &-nav {
+    display: none;
+  }
+  &-go-input {
+    display: none;
+  }
+  &-pages {
+    color: $black;
+    margin-left: 0px;
+    float: left;
+  }
+}
+
+.paginationjs-pages ul {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.pagination-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .pagination-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pagination-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+// below copied and edited styles from library : node_modules/paginationjs/dist/pagination.css  ---
+
+.paginationjs .paginationjs-pages li {
+  float: left;
+  border: none;
+  list-style: none;
+}
+.paginationjs .paginationjs-pages li > a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.paginationjs .paginationjs-pages li:not(.disabled) > a:hover,
+.paginationjs .paginationjs-pages li:not(.disabled) > a:focus {
+  // background: rgba($orange, 30%);
+  color: $orange;
+  // border-radius: 5px;
+  // width: 40px;
+  // height: 40px;
+  // line-height: 40px;
+  transition: color $shift;
+  scale: 200%;
+}
+
+.paginationjs .paginationjs-pages li:first-child.disabled > a {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.paginationjs .paginationjs-pages li:last-child.disabled > a {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active > a {
+  background: $orange;
+  color: $white;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  scale: 100%;
+}
+
+.paginationjs .paginationjs-pages li:first-child,
+.paginationjs .paginationjs-pages li:last-child {
+  background-color: $gray-footer-bg;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.paginationjs .paginationjs-pages li.paginationjs-ellipsis > a {
+  color: $black;
+}
+
+.paginationjs .paginationjs-pages .paginationjs-ellipsis .disabled {
+  color: $black;
 }

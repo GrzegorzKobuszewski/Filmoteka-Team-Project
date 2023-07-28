@@ -16,6 +16,13 @@
       integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
       crossorigin="anonymous"
     />
+
+    <!-- Podłączenie favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="./images/favicon/site.webmanifest" />
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <link rel="stylesheet" href="..\node_modules\paginationjs\dist\pagination.css" /> -->
   </head>
@@ -23,16 +30,17 @@
   <body>
     <!-- W taki sposbu dodajemy fragmenty kodu w głównym pliku strony: -->
     <!-- <include src="./partials/example.html"></include> -->
-    <div class="content">
-      <include src="./partials/header.html"></include>
-      <include src="./partials/modal.html"></include>
-      <include src="./partials/gallery.html"></include>
-      <include src="./partials/pagination.html"></include>
-      <include src="./partials/footer.html"></include>
-      <include src="./partials/footer_modal.html"></include>
-    </div>
+
+    <include src="./partials/header.html"></include>
+    <include src="./partials/modal.html"></include>
+    <include src="./partials/gallery.html"></include>
+    <include src="./partials/pagination.html"></include>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/footer_modal.html"></include>
+    <include src="./partials/components.html"></include>
 
     <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
     <script src="./index.js" type="module"></script>
+    <script src="./js/movieSearch.js" type="module"></script>
   </body>
 </html>
