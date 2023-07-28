@@ -2,24 +2,26 @@
   <div class="container">
     <div class="header__main">
       <div class="header__title">
-        <svg class="header__title__logo" width="24" height="24">
+        <svg class="header__logo" width="24" height="24">
             <use href="/src/images/icons.svg#icon-film"></use>
           </svg>
-          <h1 class="header__title__name">Filmoteka</h1>
+          <h1 class="header__title__name header__highlight">Filmoteka</h1>
         </a>
       </div>
 
       <nav class="header__nav">
         <a href="./index.html" >HOME</a>
-        <a href="./library.html" class="header__nav__active">MY LIBRARY</a>
+        <a href="./library.html" class="header__nav__active header__highlight">MY LIBRARY</a>
       </nav>
     </div>
-    <form  class="header__form" id="search-form">
-      <input class="header__form__input" type="text" name="searchQuery" placeholder="Movie search" />
+    <form class="header__form"> 
+      <input class="header__form__input" type="text" placeholder="Movie search" />
       <!-- todo - dodac button z typem submit jako wrapper do ikony -->
+     <button type="submit" class="header__form__button" >
       <svg class="header__form__icon" width="16" height="16">
         <use href="./images/icons.svg#icon-search-2"></use>
       </svg>
+    </button>
     </form>
   </div>
 </div>
