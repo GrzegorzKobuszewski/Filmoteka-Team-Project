@@ -110,8 +110,8 @@ function paginationInit() {
     pageRange: 2,
     showPageNumbers: true,
     showNavigator: true,
-    prevText: 'prev',
-    nextText: 'next',
+    // prevText: 'prev',
+    // nextText: 'next',
     showGoInput: true,
     className: 'paginationjs-theme-blue',
     beforePaging: function (param) {
