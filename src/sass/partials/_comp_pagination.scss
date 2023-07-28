@@ -58,13 +58,16 @@
   flex-shrink: 0;
 }
 
-.paginationjs .paginationjs-pages li:not(.disabled) > a:hover {
-  background: rgba($orange, 30%);
-  color: $white;
-  border-radius: 5px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+.paginationjs .paginationjs-pages li:not(.disabled) > a:hover,
+.paginationjs .paginationjs-pages li:not(.disabled) > a:focus {
+  // background: rgba($orange, 30%);
+  color: $orange;
+  // border-radius: 5px;
+  // width: 40px;
+  // height: 40px;
+  // line-height: 40px;
+  transition: color $shift;
+  scale: 200%;
 }
 
 .paginationjs .paginationjs-pages li:first-child.disabled > a {
@@ -84,6 +87,7 @@
   width: 40px;
   height: 40px;
   line-height: 40px;
+  scale: 100%;
 }
 
 .paginationjs .paginationjs-pages li:first-child,
