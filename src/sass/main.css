@@ -450,13 +450,6 @@ footer {
   cursor: pointer;
 }
 
-button{
-  margin-top: -10px !important;
-  width: 100px !important;
-  height: 100px !important;
-  color: #0004ff !important;
-}
-
 .paginationjs {
   justify-content: center;
 }/*# sourceMappingURL=main.css.map */
