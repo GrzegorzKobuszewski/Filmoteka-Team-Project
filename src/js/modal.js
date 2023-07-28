@@ -5,6 +5,7 @@ const closeBtn = document.querySelector('#close-btn');
 function openModal() {
   modal.style.display = 'block';
 }
+
 function closeModal() {
   modal.style.display = 'none';
 }
