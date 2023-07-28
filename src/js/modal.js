@@ -1,4 +1,4 @@
-const movieCard = document.querySelector('.movie-card');
+const movieCards = document.querySelectorAll('.movie-card');
 const modal = document.querySelector('.modal');
 const closeBtn = document.querySelector('#close-btn');
 
@@ -8,7 +8,11 @@ function openModal() {
 function closeModal() {
   modal.style.display = 'none';
 }
-movieCard.addEventListener('click', openModal);
+
+movieCards.forEach(movieCard => {
+  movieCard.addEventListener('click', openModal);
+});
+
 closeBtn.addEventListener('click', closeModal);
 
 window.onclick = function (e) {
