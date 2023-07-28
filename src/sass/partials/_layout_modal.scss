@@ -1,6 +1,11 @@
 .modal {
   position: fixed;
   display: none;
+  background-color: $white;
+  color: $black;
+  font-family: $main-font;
+  font-weight: 500;
+  font-size: 12px;
   @media screen and (max-width: 767px) {
     left: 10%;
     top: 20px;
@@ -20,8 +25,9 @@
   }
 }
 
+//treść okna modalnego
+
 .modal-content {
-  background-color: white;
   @media screen and (max-width: 767px) {
     padding-top: 48px;
     padding-left: 20px;
@@ -41,6 +47,8 @@
   }
 }
 
+//style zdjęć filmów
+
 .modal-image {
   border-radius: 5px;
   @media screen and (max-width: 767px) {
@@ -59,13 +67,13 @@
   }
 }
 
+//przycisk do zamykania okna modalnego
+
 .close-btn {
   position: absolute;
   top: 0;
   right: 0;
-  border: none;
-  background-color: transparent;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   padding: 5px;
   width: 30px;
@@ -73,9 +81,11 @@
 }
 
 .close-btn:hover {
-  color: gray;
+  color: $gray-modal-tex;
   cursor: pointer;
 }
+
+//style ogólne przycisków
 
 .button {
   display: flex;
@@ -98,15 +108,15 @@
   }
 }
 
+//szczegółowe style dla przycisków
+
 .add-btn {
   display: flex;
   border-radius: 5px;
-  border: 1px solid #000;
-  background-color: white;
+  border: 1px solid $black;
+  background-color: $white;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
-  font-weight: 500;
   @media screen and (max-width: 767px) {
     width: 110px;
     height: 44px;
@@ -124,28 +134,22 @@
 }
 
 .add-btn:hover {
-  background-color: #ff6b01;
-  color: white;
+  background-color: $orange-buttons;
+  color: $white;
   cursor: pointer;
 }
 
+//style dużego tytułu filmu
+
 .film-title {
   text-transform: uppercase;
-  color: #000;
-  font-family: Roboto;
-
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   @media screen and (max-width: 767px) {
-    color: #000;
-    font-family: Roboto;
     font-size: 20px;
     padding-top: 20px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     position: absolute;
-    bottom: 498px;
+    bottom: 493px;
     left: 310px;
     margin-left: 68px;
     height: 20px;
@@ -160,15 +164,14 @@
   }
 }
 
+//style ogólne dla detali filmów
+
 .film-info {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #8c8c8c;
-  font-family: Roboto;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
+  color: $gray-modal-tex;
+
   line-height: 16px; /* 133.333% */
   @media screen and (max-width: 767px) {
     padding-top: 20px;
@@ -187,15 +190,15 @@
   }
 }
 
+//style oceny średniej filmów
+
 .film-rating {
   position: absolute;
   border-radius: 5px;
-  background-color: #ff6b01;
-  color: #fff;
+  background-color: $orange-buttons;
+  color: $white;
   text-align: center;
-  font-family: Roboto;
   font-size: 12px;
-  font-weight: 500;
   text-transform: uppercase;
   width: 36px;
   height: 16px;
@@ -212,6 +215,8 @@
   }
 }
 
+//style ukośnika przy ocenie
+
 .slash {
   position: absolute;
   @media screen and (max-width: 767px) {
@@ -225,17 +230,17 @@
   }
 }
 
+//style ogólnej liczby głosów
+
 .votes {
   position: absolute;
   left: 200px;
-  color: #000;
+  color: $black;
   text-align: center;
-  font-family: Roboto;
   font-size: 12px;
-  font-weight: 500;
   text-transform: uppercase;
   border-radius: 5px;
-  background: #f7f7f7;
+  background-color: $gray-footer-bg;
   width: 36px;
   height: 16px;
   flex-shrink: 0;
@@ -250,13 +255,10 @@
   }
 }
 
+//style popularity
+
 .film-popularity {
-  color: #000;
-  font-family: Roboto;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  color: $black;
   text-transform: uppercase;
   padding-left: 97px;
   @media screen and (max-width: 767px) {
@@ -264,12 +266,10 @@
   }
 }
 
+//style tytułu w detalach
+
 .film-original-title {
-  color: #000;
-  font-family: Roboto;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
+  color: $black;
   line-height: 16px; /* 133.333% */
   padding-left: 83px;
   @media screen and (max-width: 767px) {
@@ -277,12 +277,10 @@
   }
 }
 
+//gatunek filmu
+
 .film-genere {
-  color: #000;
-  font-family: Roboto;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
+  color: $black;
   line-height: 16px; /* 133.333% */
   padding-left: 120px;
   @media screen and (max-width: 767px) {
@@ -290,11 +288,10 @@
   }
 }
 
+//opis filmu + about
+
 .film-description {
-  color: #000;
-  font-family: Roboto;
-  font-size: 12px;
-  font-weight: 500;
+  color: $black;
   line-height: 20px; /* 133.333% */
   margin-right: 12px;
   line-height: 20px;
@@ -318,6 +315,8 @@
     margin-right: 12px;
   }
 }
+
+//style słowa about
 
 .about {
   text-transform: uppercase;
