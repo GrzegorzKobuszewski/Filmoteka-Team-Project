@@ -105,15 +105,31 @@ getStartMovies();
 
 function paginationInit() {
   $('#pagination-container').pagination({
+    // Daliśmy pustą klasę stylów do każej klasy domyślnej z biblioteki paginationjs, ponieważ generowały błędy w projekcie - hipoteza częściowo potwierdzona
+    // Pamiętaj, że zakomentowanie klasy sprawi, że biblioteka odniesie się do stylów domyślnych
+    // http://pagination.js.org/docs/index.html#classPrefix
+    // http://pagination.js.org/docs/index.html#Theme
+    classPrefix: 'emptyClass.css',
+    className: 'emptyClass.css',
+    // activeClassName: 'emptyClass.css',
+    disableClassName: 'emptyClass.css',
+    ulClassName: 'emptyClass.css',
+    // pageClassName: 'emptyClass.css',
+    // prevClassName: 'emptyClass.css',
+    // nextClassName: 'emptyClass.css',
     dataSource: moviesArray,
     pageSize: moviesPerPage,
-    pageRange: 2,
+    pageRange: 1,
+    hideFirstOnEllipsisShow: true,
+    hideLastOnEllipsisShow: true,
+    autoHideNext: true, 
+    autoHidePrevious: true,
     showPageNumbers: true,
-    showNavigator: true,
+    showNavigator: false,
     // prevText: 'prev',
     // nextText: 'next',
     showGoInput: true,
-    className: 'paginationjs-theme-blue',
+    // beforeGoInputOnEnter: ,
     beforePaging: function (param) {
       let page = 1;
       if ((param * moviesPerPage) % 20 === 0) {
@@ -157,13 +173,13 @@ function template(data) {
     if (data[i].release != undefined) year = data[i].release.slice(0, 4); //musi być, bo slice przy undefined generuje bład;
     html += `
     <li class="movie-card">
-                    <img class="movie-card__image" src="${data[i].poster}" alt="${data[i].title}" loading="lazy"/>
-                    <div class="movie-card__text">
-                      <h2 class="movie-card__text--title">${data[i].title}</h2>
-                        <p class="movie-card__text--info">${data[i].genre} | ${year}</p>
-                        <p class="movie-card__text--vote">${data[i].vote}</p>
-                    </div>
-</li>
+      <img class="movie-card__image" src="${data[i].poster}" alt="${data[i].title}" loading="lazy"/>
+      <div class="movie-card__text">
+        <h2 class="movie-card__text--title">${data[i].title}</h2>
+          <p class="movie-card__text--info">${data[i].genre} | ${year}</p>
+          <p class="movie-card__text--vote">${data[i].vote}</p>
+      </div>
+    </li>
 `;
   }
   return html + ' </ul>';
