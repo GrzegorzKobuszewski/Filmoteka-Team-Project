@@ -5,11 +5,14 @@
   flex-direction: column;
   gap: 10px;
   padding-top: 20px;
+  position: relative;
 }
 
 .movie-card__image {
   border-radius: 5px;
   width: 100%;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 .movie-card__text {
@@ -29,6 +32,26 @@
 .movie-card__text--info {
   color: $orange;
   line-height: 14px;
+}
+
+.movie-card__text--vote {
+  background-color: $orange;
+  border-top-right-radius: 35%;
+  border-bottom-left-radius: 35%;
+  color: $white;
+  font-size: 14px;
+  font-weight: 400;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  width: 50px;
+}
+
+.movie-card > .movie-card__text > .movie-card__text--vote {
+  position: absolute;
+  top: 25px;
+  right: 5px;
+  margin: 0;
 }
 
 .gallery {
