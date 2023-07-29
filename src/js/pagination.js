@@ -1,6 +1,7 @@
 //Ustawienia wstępne / deklaracje ...
 import pagination from 'paginationjs';
 import Notiflix from 'notiflix';
+import { fetchMovieById } from './api.js';
 const urlSearch = 'https://api.themoviedb.org/3/search/movie';
 const urlStart = 'https://api.themoviedb.org/3/movie/popular';
 let typeOfAPI = 'start';
@@ -45,14 +46,20 @@ function getStartMovies() {
         moviesArray.push(i);
       }
 
+      console.log(json.results);
+
       for (let i = 1; i <= totalResults && i <= 20; i++) {
         moviesArray[i - 1] = {
+          id: json.results[i - 1].id,
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
           genre: json.results[i - 1].genre_ids,
           release: json.results[i - 1].release_date,
           vote: json.results[i - 1].vote_average,
         };
+        if (json.results[i - 1].poster_path === null) {
+          moviesArray[20 * (page - 1) + i - 1].poster = '../images/nocover.jpg';
+        }
       }
 
       paginationInit();
@@ -86,12 +93,16 @@ function getMovies(page) {
         //console.log(20 * (page - 1) + i - 1);
         //console.log(json.results[i - 1]);
         moviesArray[20 * (page - 1) + i - 1] = {
+          id: json.results[i - 1].id,
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
           genre: json.results[i - 1].genre_ids,
           release: json.results[i - 1].release_date,
           vote: json.results[i - 1].vote_average,
         };
+        if (json.results[i - 1].poster_path === null) {
+          moviesArray[20 * (page - 1) + i - 1].poster = '../images/nocover.jpg';
+        }
       }
       isLoading = false;
     })
@@ -99,7 +110,6 @@ function getMovies(page) {
       console.error('Błąd! Error:' + err);
     });
 }
-
 //pobierz pierwsze filmy (20) przy wczytaniu strony:
 getStartMovies();
 
@@ -122,7 +132,7 @@ function paginationInit() {
     pageRange: 1,
     hideFirstOnEllipsisShow: true,
     hideLastOnEllipsisShow: true,
-    autoHideNext: true, 
+    autoHideNext: true,
     autoHidePrevious: true,
     showPageNumbers: true,
     showNavigator: false,
@@ -158,7 +168,7 @@ function paginationInit() {
           setTimeout(() => {
             var html = template(moviesArray.slice(start, stop + 1));
             $('#data-container').html(html);
-          }, 3000);
+          }, 2000);
         }
       }, 500);
     },
@@ -172,7 +182,7 @@ function template(data) {
   for (let i = 0; i < data.length; i++) {
     if (data[i].release != undefined) year = data[i].release.slice(0, 4); //musi być, bo slice przy undefined generuje bład;
     html += `
-    <li class="movie-card">
+    <li id=${data[i].id} class="movie-card">
       <img class="movie-card__image" src="${data[i].poster}" alt="${data[i].title}" loading="lazy"/>
       <div class="movie-card__text">
         <h2 class="movie-card__text--title">${data[i].title}</h2>
@@ -208,4 +218,50 @@ formEl.addEventListener('submit', e => {
   textToSearch = inputEl.value.trim();
   // wyświetl galerię z wynikami szukania:
   getStartMovies();
+});
+
+// *********************************************** KOD DLA MODALA ZE SZCZEGÓŁAMI ***********************************
+//słuchanie czy klknie w film:
+async function handleMovieImageClick(event) {
+  // Pobieramy element <li> zawierający kliknięty obraz
+  const movieCard = event.target.closest('.movie-card');
+  if (movieCard) {
+    // Pobieramy numer id filmu z atrybutu id elementu <li>
+    const movieId = movieCard.id;
+    console.log('Numer id filmu:', movieId);
+    Notiflix.Notify.info(`Numer id filmu: ${movieId}`);
+
+    //poczekaj aż skończy pobierać!!!
+    const videoDetails = await fetchMovieById(movieId);
+    console.log(videoDetails);
+
+    //tworzę HTMLa
+    let html = '';
+    html += `
+    <div id=${videoDetails.id} class="movie-card">
+      <img class="movie-card__image" src="${videoDetails.poster_path}" alt="${videoDetails.title}" loading="lazy"/>
+      <div class="movie-card__text">
+        <h2 class="movie-card__text--title">${videoDetails.overview}</h2>
+          <p class="movie-card__text--info">${videoDetails.genres}</p>
+          <p class="movie-card__text--vote">${videoDetails.vote_average}</p>
+      </div>
+    </div>
+    `;
+    console.log(html);
+    setTimeout(() => {
+      Notiflix.Notify.success(videoDetails.overview);
+    }, 2000);
+  }
+}
+
+// Pobieramy kontener galerii filmów
+const galleryContainer = document.querySelector('.gallery');
+
+// Dodajemy słuchacza zdarzeń dla całej galerii
+galleryContainer.addEventListener('click', event => {
+  // Sprawdzamy, czy kliknięcie było na obrazie (element o klasie "movie-card__image")
+  if (event.target.classList.contains('movie-card__image')) {
+    // Wywołujemy funkcję tylko wtedy, gdy kliknięcie było na obrazie
+    handleMovieImageClick(event);
+  }
 });
