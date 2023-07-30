@@ -8,7 +8,7 @@
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
     flex-direction: column;
   }
@@ -22,10 +22,16 @@
   gap: 10px;
   position: relative;
   &__image {
-    border-radius: 5px;
+    border-radius: 30px;
+    cursor: pointer;
     width: 100%;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 1px 1px 24px -6px rgba(0, 0, 0, 1);
+    &:hover,
+    &:focus {
+      transition: $shift;
+      scale: 103%;
+      box-shadow: 1px 1px 24px 7px rgba(255, 107, 8, 1);
+    }
   }
   &__text {
     font-size: 12px;
@@ -41,26 +47,27 @@
     &--info {
       color: $orange;
       line-height: 14px;
+      font-weight: 300;
     }
     &--vote {
       background-color: $orange;
       border-top-right-radius: 35%;
       border-bottom-left-radius: 35%;
       color: $white;
-      font-size: 14px;
-      font-weight: 400;
-      height: 25px;
-      line-height: 25px;
+      font-size: 18px;
+      font-weight: 500;
+      height: 40px;
+      line-height: 40px;
       text-align: center;
-      width: 50px;
+      width: 80px;
     }
   }
 }
 
 .movie-card > .movie-card__text > .movie-card__text--vote {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
   margin: 0;
 }
 
@@ -74,14 +81,14 @@
     }
     &_movies {
       flex-direction: row;
-      gap: 32px;
+      gap: 25px;
       width: 768px;
       justify-content: center;
     }
   }
 
   .movie-card {
-    flex-basis: calc((100% - 32px) / 2);
+    flex-basis: calc((100% - 25px) / 2);
     max-width: 336px;
     gap: 8px;
   }
@@ -95,16 +102,16 @@
     &_movies {
       flex-direction: row;
       padding-top: 60px;
-      gap: 16px;
+      gap: 30px;
       justify-content: center;
     }
   }
 
   .movie-card {
-    flex-basis: calc((100% - 32px) / 3);
+    flex-basis: calc((100% - 60px) / 3);
     max-width: 395px;
     gap: 16px;
-    &__ text {
+    &__text {
       font-size: 20px;
       line-height: 2;
       &--title {

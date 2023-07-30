@@ -188,7 +188,7 @@ img {
   padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
   flex-direction: column;
 }
@@ -202,9 +202,15 @@ img {
   position: relative;
 }
 .movie-card__image {
-  border-radius: 5px;
+  border-radius: 30px;
+  cursor: pointer;
   width: 100%;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 1px 24px -6px rgb(0, 0, 0);
+}
+.movie-card__image:hover, .movie-card__image:focus {
+  transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  scale: 103%;
+  box-shadow: 1px 1px 24px 7px rgb(255, 107, 8);
 }
 .movie-card__text {
   font-size: 12px;
@@ -221,24 +227,25 @@ img {
 .movie-card__text--info {
   color: #FF6B08;
   line-height: 14px;
+  font-weight: 300;
 }
 .movie-card__text--vote {
   background-color: #FF6B08;
   border-top-right-radius: 35%;
   border-bottom-left-radius: 35%;
   color: #ffffff;
-  font-size: 14px;
-  font-weight: 400;
-  height: 25px;
-  line-height: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
-  width: 50px;
+  width: 80px;
 }
 
 .movie-card > .movie-card__text > .movie-card__text--vote {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
   margin: 0;
 }
 
@@ -253,12 +260,12 @@ img {
   }
   .gallery_movies {
     flex-direction: row;
-    gap: 32px;
+    gap: 25px;
     width: 768px;
     justify-content: center;
   }
   .movie-card {
-    flex-basis: calc((100% - 32px) / 2);
+    flex-basis: calc((100% - 25px) / 2);
     max-width: 336px;
     gap: 8px;
   }
@@ -272,19 +279,19 @@ img {
   .gallery_movies {
     flex-direction: row;
     padding-top: 60px;
-    gap: 16px;
+    gap: 30px;
     justify-content: center;
   }
   .movie-card {
-    flex-basis: calc((100% - 32px) / 3);
+    flex-basis: calc((100% - 60px) / 3);
     max-width: 395px;
     gap: 16px;
   }
-  .movie-card__ text {
+  .movie-card__text {
     font-size: 20px;
     line-height: 2;
   }
-  .movie-card__ text--title {
+  .movie-card__text--title {
     font-size: 20px;
   }
 }
