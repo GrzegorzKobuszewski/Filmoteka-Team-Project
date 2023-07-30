@@ -6,7 +6,7 @@ import { openModal } from './modal';
 export let html = '';
 const urlSearch = 'https://api.themoviedb.org/3/search/movie';
 const urlStart = 'https://api.themoviedb.org/3/movie/popular';
-let typeOfAPI = 'start';
+let typeOfAPI = 'start'; // start, search, watched, queue
 const options = {
   method: 'GET',
   headers: {
@@ -90,9 +90,6 @@ function getStartMovies() {
         if (json.results[i - 1].poster_path === null) {
           moviesArray[i - 1].poster = '../images/nocover.jpg';
         }
-
-        //   moviesArray[20 * (pagination.page - 1) + i - 1].poster = '../images/nocover.jpg';
-        // }
       }
 
       paginationInit();
@@ -123,8 +120,11 @@ function getMovies(page) {
       //console.log(`Jest then po Fetch, page: ${page}`);
 
       for (let i = 1; i <= json.results.length; i++) {
-        //console.log(20 * (page - 1) + i - 1);
-        //console.log(json.results[i - 1]);
+        // Zamień gatunki ID na stringi:
+        let genresNames = findNameById(json.results[i - 1].genre_ids[0], genresArray);
+        genresNames += `, `;
+        genresNames += findNameById(json.results[i - 1].genre_ids[1], genresArray);
+
         moviesArray[20 * (page - 1) + i - 1] = {
           id: json.results[i - 1].id,
           title: json.results[i - 1].title,
