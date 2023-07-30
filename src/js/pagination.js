@@ -20,6 +20,7 @@ let moviesPerPage = 10;
 let totalResults = 1; //całkowita liczba wyników - filmów - max 10000 videos!!!
 let isLoading = false;
 let textToSearch = '';
+let urlNoCover = new URL('../images/nocover.jpg', import.meta.url);
 
 //pobierz nazwy gatunków - tylko przy wczytywaniu strony:
 const genresArray = [
@@ -88,7 +89,8 @@ function getStartMovies() {
           vote: json.results[i - 1].vote_average.toFixed(2),
         };
         if (json.results[i - 1].poster_path === null) {
-          moviesArray[i - 1].poster = '../images/nocover.jpg';
+          moviesArray[i - 1].poster = urlNoCover;
+          // test
         }
       }
 
@@ -134,7 +136,7 @@ function getMovies(page) {
           vote: json.results[i - 1].vote_average.toFixed(2),
         };
         if (json.results[i - 1].poster_path === null) {
-          moviesArray[20 * (page - 1) + i - 1].poster = '../images/nocover.jpg';
+          moviesArray[20 * (page - 1) + i - 1].poster = urlNoCover;
         }
       }
       isLoading = false;
