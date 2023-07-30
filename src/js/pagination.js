@@ -122,7 +122,7 @@ function paginationInit() {
     classPrefix: 'emptyClass.css',
     className: 'emptyClass.css',
     // activeClassName: 'emptyClass.css',
-    disableClassName: 'emptyClass.css',
+    disableClassName: 'disable',
     ulClassName: 'emptyClass.css',
     // pageClassName: 'emptyClass.css',
     // prevClassName: 'emptyClass.css',

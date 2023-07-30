@@ -881,6 +881,12 @@ footer {
   border-color: #FF001B;
   color: #FF001B;
 }
+.J-paginationjs-go-pagenumber:not(:-moz-placeholder-shown) {
+  width: 70px;
+}
+.J-paginationjs-go-pagenumber:not(:placeholder-shown) {
+  width: 70px;
+}
 .J-paginationjs-go-pagenumber:focus {
   outline: none;
 }
@@ -928,48 +934,38 @@ footer {
   flex-shrink: 0;
 }
 
-.paginationjs .paginationjs-pages li:not(.disabled) > a:hover,
-.paginationjs .paginationjs-pages li:not(.disabled) > a:focus {
+.paginationjs .paginationjs-pages li > a:hover,
+.paginationjs .paginationjs-pages li > a:focus {
   color: #FF6B08;
   transition: color 400ms cubic-bezier(0.4, 0, 0.2, 1);
   scale: 200%;
 }
 
-.paginationjs .paginationjs-pages li:first-child.disabled > a {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.paginationjs .paginationjs-pages li:last-child.disabled > a {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active > a {
+.paginationjs .paginationjs-pages li.active > a {
   background: #FF6B08;
   color: #ffffff;
   border-radius: 5px;
   width: 40px;
   height: 40px;
   line-height: 40px;
+  transition: none;
   scale: 100%;
 }
 
-.paginationjs .paginationjs-pages li:first-child,
+.paginationjs .paginationjs-pages li.disable > a {
+  color: #000000;
+  cursor: not-allowed;
+  transition: none;
+  scale: 100%;
+}
+
+.paginationjs .paginationjs-pages li:first-child:not(.J-paginationjs-page),
 .paginationjs .paginationjs-pages li:last-child {
   background-color: #F7F7F7;
   border-radius: 5px;
   width: 40px;
   height: 40px;
   line-height: 40px;
-}
-
-.paginationjs .paginationjs-pages li.paginationjs-ellipsis > a {
-  color: #000000;
-}
-
-.paginationjs .paginationjs-pages .paginationjs-ellipsis .disabled {
-  color: #000000;
 }
 
 .go-top {

@@ -47,6 +47,9 @@
     border-color: $red;
     color: $red;
   }
+  &:not(:placeholder-shown) {
+    width: 70px;
+  }
   &:focus {
     outline: none;
   }
@@ -95,8 +98,8 @@
   flex-shrink: 0;
 }
 
-.paginationjs .paginationjs-pages li:not(.disabled) > a:hover,
-.paginationjs .paginationjs-pages li:not(.disabled) > a:focus {
+.paginationjs .paginationjs-pages li > a:hover,
+.paginationjs .paginationjs-pages li > a:focus {
   // background: rgba($orange, 30%);
   color: $orange;
   // border-radius: 5px;
@@ -107,39 +110,29 @@
   scale: 200%;
 }
 
-.paginationjs .paginationjs-pages li:first-child.disabled > a {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.paginationjs .paginationjs-pages li:last-child.disabled > a {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active > a {
+.paginationjs .paginationjs-pages li.active > a {
   background: $orange;
   color: $white;
   border-radius: 5px;
   width: 40px;
   height: 40px;
   line-height: 40px;
+  transition: none;
   scale: 100%;
 }
 
-.paginationjs .paginationjs-pages li:first-child,
+.paginationjs .paginationjs-pages li.disable > a {
+  color: $black;
+  cursor: not-allowed;
+  transition: none;
+  scale: 100%;
+}
+
+.paginationjs .paginationjs-pages li:first-child:not(.J-paginationjs-page),
 .paginationjs .paginationjs-pages li:last-child {
   background-color: $gray-footer-bg;
   border-radius: 5px;
   width: 40px;
   height: 40px;
   line-height: 40px;
-}
-
-.paginationjs .paginationjs-pages li.paginationjs-ellipsis > a {
-  color: $black;
-}
-
-.paginationjs .paginationjs-pages .paginationjs-ellipsis .disabled {
-  color: $black;
 }
