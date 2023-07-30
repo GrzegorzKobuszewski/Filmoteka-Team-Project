@@ -1,86 +1,94 @@
+.gallery {
+  min-width: 320px;
+  max-width: 767px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  &_movies {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
 .movie-card {
-  max-width: 280px;
+  min-width: 280px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-top: 20px;
   position: relative;
-}
-
-.movie-card__image {
-  border-radius: 5px;
-  width: 100%;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-}
-
-.movie-card__text {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-  text-align: left;
-  font-family: $main-font;
-}
-
-.movie-card__text--title {
-  color: $black;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-.movie-card__text--info {
-  color: $orange;
-  line-height: 14px;
-}
-
-.movie-card__text--vote {
-  background-color: $orange;
-  border-top-right-radius: 35%;
-  border-bottom-left-radius: 35%;
-  color: $white;
-  font-size: 14px;
-  font-weight: 400;
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
-  width: 50px;
+  &__image {
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 1px 1px 24px -6px rgba(0, 0, 0, 1);
+    &:hover,
+    &:focus {
+      transition: $shift;
+      scale: 103%;
+      box-shadow: 1px 1px 24px 7px rgba(255, 107, 8, 1);
+    }
+  }
+  &__text {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+    font-family: $main-font;
+    &--title {
+      color: $black;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    &--info {
+      color: $orange;
+      line-height: 14px;
+      font-weight: 300;
+    }
+    &--vote {
+      background-color: $orange;
+      border-top-right-radius: 35%;
+      border-bottom-left-radius: 35%;
+      color: $white;
+      font-size: 18px;
+      font-weight: 500;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      width: 80px;
+    }
+  }
 }
 
 .movie-card > .movie-card__text > .movie-card__text--vote {
   position: absolute;
-  top: 25px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
   margin: 0;
 }
 
-.gallery {
-  max-width: 320px;
-  display: flex;
-  margin: auto;
-}
-.gallery_movies {
-  justify-content: center;
-  flex-direction: column;
-}
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .gallery {
-    max-width: 768px;
+    min-width: 768px;
+    max-width: 1023px;
     margin: 39px auto 60px auto;
+    &_layout {
+      padding: 0;
+    }
+    &_movies {
+      flex-direction: row;
+      gap: 25px;
+      width: 768px;
+      justify-content: center;
+    }
   }
-  .gallery_layout {
-    padding: 0;
-  }
-  .gallery_movies {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 768px;
-    column-gap: 30px;
-    justify-content: center;
-  }
+
   .movie-card {
+    flex-basis: calc((100% - 25px) / 2);
     max-width: 336px;
     gap: 8px;
   }
@@ -89,26 +97,26 @@
 @media (min-width: 1024px) {
   .gallery {
     width: 100%;
-    max-width: 1280px;
-    margin: 40px auto 60px;
-  }
-  .gallery_movies {
     min-width: 1024px;
-    width: 100%;
     max-width: 1280px;
-    column-gap: 16px;
+    &_movies {
+      flex-direction: row;
+      padding-top: 60px;
+      gap: 30px;
+      justify-content: center;
+    }
   }
+
   .movie-card {
+    flex-basis: calc((100% - 60px) / 3);
     max-width: 395px;
-    gap: 12px;
-  }
-
-  .movie-card__text {
-    font-size: 20px;
-    line-height: 2;
-  }
-
-  .movie-card__text--title {
-    font-size: 20px;
+    gap: 16px;
+    &__text {
+      font-size: 20px;
+      line-height: 2;
+      &--title {
+        font-size: 20px;
+      }
+    }
   }
 }
