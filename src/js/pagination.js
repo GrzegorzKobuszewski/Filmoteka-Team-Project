@@ -1,5 +1,5 @@
 //Ustawienia wstępne / deklaracje ...
-import paginationjs from 'paginationjs';
+import pagination from 'paginationjs';
 import Notiflix from 'notiflix';
 import { fetchMovieById } from './api.js';
 import { openModal } from './modal';
