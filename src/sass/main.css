@@ -1,4 +1,3 @@
-@import './../../node_modules/paginationjs/dist/pagination.css';
 :root {
   font-family: "Roboto", sans-serif;
 }
@@ -432,18 +431,19 @@ footer {
   }
 }
 .modal {
-  position: fixed;
-  display: none;
+  display: flex;
+  position: relative;
   background-color: #ffffff;
   color: #000000;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 @media screen and (max-width: 767px) {
   .modal {
-    left: 10%;
-    top: 20px;
     width: 280px;
     height: 940px;
     flex-shrink: 0;
@@ -459,32 +459,30 @@ footer {
   .modal {
     width: 806px;
     height: 558;
-    top: 150px;
-    left: 20%;
   }
 }
 
+.modal-content {
+  display: flex;
+  flex-direction: row;
+}
 @media screen and (max-width: 767px) {
   .modal-content {
-    padding-top: 48px;
-    padding-left: 20px;
+    padding: 12px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .modal-content {
-    padding-left: 36px;
+    padding: 12px;
     width: 704px;
     height: 552px;
-    padding-top: 40px;
   }
 }
 @media screen and (min-width: 1200px) {
   .modal-content {
     width: 806px;
     height: 558;
-    padding-top: 40px;
-    padding-left: 12px;
-    padding-top: 40px;
+    padding: 12px;
   }
 }
 
@@ -506,13 +504,13 @@ footer {
 }
 @media screen and (min-width: 1200px) {
   .modal-image {
-    max-width: 100%;
     width: 375px;
     height: 478px;
   }
 }
 
 .close-btn {
+  display: block;
   position: absolute;
   top: 0;
   right: 0;
@@ -521,6 +519,7 @@ footer {
   padding: 5px;
   width: 30px;
   height: 30px;
+  text-align: center;
 }
 
 .close-btn:hover {
@@ -528,34 +527,31 @@ footer {
   cursor: pointer;
 }
 
-.button {
+.modalButton {
   display: flex;
   gap: 15px;
 }
 @media screen and (max-width: 767px) {
-  .button {
-    padding-top: 20px;
-    padding-bottom: 40px;
+  .modalButton {
+    margin-top: 20px;
+    margin-left: 10px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .button {
-    position: absolute;
-    bottom: 30px;
-    left: 310px;
-    margin-left: 68px;
+  .modalButton {
     margin-top: 20px;
+    margin-left: 68px;
   }
 }
 @media screen and (min-width: 1200px) {
-  .button {
-    position: absolute;
-    bottom: 111px;
-    left: 411px;
+  .modalButton {
+    margin-top: 20px;
+    margin-left: 24px;
   }
 }
 
-.add-btn {
+.watched-btn-modal,
+.queue-btn-modal {
   display: flex;
   border-radius: 5px;
   border: 1px solid #000000;
@@ -564,27 +560,31 @@ footer {
   align-items: center;
 }
 @media screen and (max-width: 767px) {
-  .add-btn {
+  .watched-btn-modal,
+  .queue-btn-modal {
     width: 110px;
     height: 44px;
     flex-shrink: 0;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .add-btn {
+  .watched-btn-modal,
+  .queue-btn-modal {
     width: 125.032px;
     height: 44px;
     flex-shrink: 0;
   }
 }
 @media screen and (min-width: 1200px) {
-  .add-btn {
+  .watched-btn-modal,
+  .queue-btn-modal {
     width: 136px;
     height: 44px;
   }
 }
 
-.add-btn:hover {
+.watched-btn-modal:hover,
+.queue-btn-modal:hover {
   background-color: #FF6B01;
   color: #ffffff;
   cursor: pointer;
@@ -601,7 +601,6 @@ footer {
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .film-title {
-    position: absolute;
     bottom: 493px;
     left: 310px;
     margin-left: 68px;
@@ -612,7 +611,6 @@ footer {
 }
 @media screen and (min-width: 1200px) {
   .film-title {
-    position: absolute;
     bottom: 481px;
     left: 403px;
     font-size: 30px;
@@ -628,28 +626,22 @@ footer {
 }
 @media screen and (max-width: 767px) {
   .film-info {
-    padding-top: 20px;
+    margin-top: 20px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .film-info {
-    position: absolute;
-    bottom: 380px;
-    left: 310px;
     margin-left: 68px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }
 @media screen and (min-width: 1200px) {
   .film-info {
-    position: absolute;
-    bottom: 379px;
-    left: 403px;
+    margin-top: 20px;
   }
 }
 
 .film-rating {
-  position: absolute;
   border-radius: 5px;
   background-color: #FF6B01;
   color: #ffffff;
@@ -662,24 +654,20 @@ footer {
 }
 @media screen and (max-width: 767px) {
   .film-rating {
-    left: 128px;
+    margin-left: 41px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .film-rating {
-    margin-left: 68px;
-    left: 88px;
+    margin-left: 85px;
   }
 }
 @media screen and (min-width: 1200px) {
   .film-rating {
-    left: 158px;
+    margin-left: 85px;
   }
 }
 
-.slash {
-  position: absolute;
-}
 @media screen and (max-width: 767px) {
   .slash {
     left: 168px;
@@ -697,7 +685,6 @@ footer {
 }
 
 .votes {
-  position: absolute;
   left: 200px;
   color: #000000;
   text-align: center;
@@ -761,31 +748,26 @@ footer {
 .film-description {
   color: #000000;
   line-height: 20px; /* 133.333% */
+  margin-top: 20px;
   margin-right: 12px;
   line-height: 20px;
 }
 @media screen and (max-width: 767px) {
   .film-description {
-    padding-top: 20px;
+    margin-top: 20px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .film-description {
-    position: absolute;
-    bottom: 100px;
-    left: 310px;
     display: flex;
     flex-direction: column;
     margin-left: 68px;
-    padding-top: 18px;
-    padding-right: 52px;
+    margin-top: 20px;
   }
 }
 @media screen and (min-width: 1200px) {
   .film-description {
-    position: absolute;
-    bottom: 175px;
-    left: 401px;
+    margin-top: 20px;
     margin-right: 12px;
   }
 }
@@ -794,6 +776,59 @@ footer {
   text-transform: uppercase;
   line-height: 16px;
   padding-bottom: 8px;
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.detailsInfo {
+  display: flex;
+}
+@media screen and (max-width: 767px) {
+  .detailsInfo {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .detailsInfo {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .detailsInfo {
+    flex-direction: row;
+  }
+}
+
+.leftSideDetails {
+  padding-top: 28px;
+}
+
+.rightSideDetails {
+  padding-top: 28px;
+}
+@media screen and (max-width: 767px) {
+  .rightSideDetails {
+    padding-left: 0px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .rightSideDetails {
+    padding-left: 16px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .rightSideDetails {
+    padding-left: 16px;
+  }
 }
 
 .button {
@@ -836,6 +871,7 @@ footer {
 }
 
 .paginationjs {
+  font-size: "Roboto", sans-serif;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -913,11 +949,23 @@ footer {
     padding-top: 60px;
     padding-bottom: 60px;
   }
+  .paginationjs {
+    font-size: 14px;
+  }
+  .J-paginationjs-go-pagenumber {
+    font-size: 14px;
+  }
 }
 @media screen and (min-width: 1024px) {
   .pagination-container {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+  .paginationjs {
+    font-size: 14px;
+  }
+  .J-paginationjs-go-pagenumber {
+    font-size: 14px;
   }
 }
 .paginationjs .paginationjs-pages li {

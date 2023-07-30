@@ -3,6 +3,7 @@
 }
 
 .paginationjs {
+  font-size: $main-font;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -74,12 +75,24 @@
     padding-top: 60px;
     padding-bottom: 60px;
   }
+  .paginationjs {
+    font-size: 14px;
+  }
+  .J-paginationjs-go-pagenumber {
+    font-size: 14px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .pagination-container {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+  .paginationjs {
+    font-size: 14px;
+  }
+  .J-paginationjs-go-pagenumber {
+    font-size: 14px;
   }
 }
 
