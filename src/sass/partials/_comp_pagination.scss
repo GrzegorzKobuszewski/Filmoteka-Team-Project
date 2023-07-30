@@ -4,11 +4,14 @@
 
 .paginationjs {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   line-height: 1.33;
   font-size: 12px;
   font-weight: 500;
   box-sizing: initial;
-  justify-content: center;
   &-nav {
     display: none;
   }
@@ -19,6 +22,36 @@
     color: $black;
     margin-left: 0px;
     float: left;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+  }
+}
+
+.emptyClass.css-go-input {
+  border-radius: 2%;
+  border-color: $orange;
+}
+
+.J-paginationjs-go-pagenumber {
+  font-size: 12px;
+  font-weight: 600;
+  width: 130px;
+  text-align: center;
+  color: $orange;
+  border-color: $orange;
+  border-radius: 5%;
+  border-width: 2px;
+  border-style: dotted;
+  &:invalid {
+    border-color: $red;
+    color: $red;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:placeholder-shown {
+    font-weight: 400;
   }
 }
 

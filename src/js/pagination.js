@@ -139,6 +139,8 @@ function paginationInit() {
     // prevText: 'prev',
     // nextText: 'next',
     showGoInput: true,
+    formatGoInput:
+      '<input type= "number" class= "J-paginationjs-go-pagenumber" placeholder="wpisz numer strony" min="1" max="1000" >',
     // beforeGoInputOnEnter: ,
     beforePaging: function (param) {
       let page = 1;
