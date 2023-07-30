@@ -55,9 +55,9 @@ function getStartMovies() {
           id: json.results[i - 1].id,
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
-          genre: json.results[i - 1].genre_ids,
+          genre: json.results[i - 1].genre_ids.splice(0, 2),
           release: json.results[i - 1].release_date,
-          vote: json.results[i - 1].vote_average,
+          vote: json.results[i - 1].vote_average.toFixed(2),
         };
         if (json.results[i - 1].poster_path === null) {
           moviesArray[20 * (page - 1) + i - 1].poster = '../images/nocover.jpg';
@@ -98,9 +98,9 @@ function getMovies(page) {
           id: json.results[i - 1].id,
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
-          genre: json.results[i - 1].genre_ids,
+          genre: json.results[i - 1].genre_ids.splice(0, 2),
           release: json.results[i - 1].release_date,
-          vote: json.results[i - 1].vote_average,
+          vote: json.results[i - 1].vote_average.toFixed(2),
         };
         if (json.results[i - 1].poster_path === null) {
           moviesArray[20 * (page - 1) + i - 1].poster = '../images/nocover.jpg';
