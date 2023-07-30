@@ -21,6 +21,29 @@ let totalResults = 1; //całkowita liczba wyników - filmów - max 10000 videos!
 let isLoading = false;
 let textToSearch = '';
 
+//pobierz nazwy gatunków - tylko przy wczytywaniu strony:
+const genresArray = [
+  { id: 28, name: 'Action' },
+  { id: 12, name: 'Adventure' },
+  { id: 16, name: 'Animation' },
+  { id: 35, name: 'Comedy' },
+  { id: 80, name: 'Crime' },
+  { id: 99, name: 'Documentary' },
+  { id: 18, name: 'Drama' },
+  { id: 10751, name: 'Family' },
+  { id: 14, name: 'Fantasy' },
+  { id: 36, name: 'History' },
+  { id: 27, name: 'Horror' },
+  { id: 10402, name: 'Music' },
+  { id: 9648, name: 'Mystery' },
+  { id: 10749, name: 'Romance' },
+  { id: 878, name: 'Science Fiction' },
+  { id: 10770, name: 'TV Movie' },
+  { id: 53, name: 'Thriller' },
+  { id: 10752, name: 'War' },
+  { id: 37, name: 'Western' },
+];
+
 // pobierz totale i stwórz tablicę pustych obiektów przy starcie strony
 function getStartMovies() {
   let url = '';
@@ -37,7 +60,7 @@ function getStartMovies() {
         // //wyzeruj tablicę filmów
         moviesArray = [];
         totalResults = 0;
-        pagination.page = 1;
+        // pagination.page = 1;
         // debugger;
       }
       // ograniczenie API do 10000 !!! - Zobacz dokumentację API
@@ -51,17 +74,25 @@ function getStartMovies() {
       console.log(json.results);
 
       for (let i = 1; i <= totalResults && i <= 20; i++) {
+        // Zamień gatunki ID na stringi:
+        let genresNames = findNameById(json.results[i - 1].genre_ids[0], genresArray);
+        genresNames += `, `;
+        genresNames += findNameById(json.results[i - 1].genre_ids[1], genresArray);
+
         moviesArray[i - 1] = {
           id: json.results[i - 1].id,
           title: json.results[i - 1].title,
           poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
-          genre: json.results[i - 1].genre_ids.splice(0, 2),
+          genre: genresNames,
           release: json.results[i - 1].release_date,
           vote: json.results[i - 1].vote_average.toFixed(2),
         };
         if (json.results[i - 1].poster_path === null) {
-          moviesArray[20 * (page - 1) + i - 1].poster = '../images/nocover.jpg';
+          moviesArray[i - 1].poster = '../images/nocover.jpg';
         }
+
+        //   moviesArray[20 * (pagination.page - 1) + i - 1].poster = '../images/nocover.jpg';
+        // }
       }
 
       paginationInit();
@@ -288,3 +319,13 @@ galleryContainer.addEventListener('click', event => {
     handleMovieImageClick(event);
   }
 });
+
+function findNameById(id, data) {
+  // debugger;
+  for (const obj of data) {
+    if (obj.id === id) {
+      return obj.name;
+    }
+  }
+  return 'other genres';
+}
