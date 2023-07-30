@@ -2,6 +2,8 @@
 import pagination from 'paginationjs';
 import Notiflix from 'notiflix';
 import { fetchMovieById } from './api.js';
+import { openModal } from './modal';
+export let html = '';
 const urlSearch = 'https://api.themoviedb.org/3/search/movie';
 const urlStart = 'https://api.themoviedb.org/3/movie/popular';
 let typeOfAPI = 'start';
@@ -229,28 +231,49 @@ async function handleMovieImageClick(event) {
     // Pobieramy numer id filmu z atrybutu id elementu <li>
     const movieId = movieCard.id;
     console.log('Numer id filmu:', movieId);
-    Notiflix.Notify.info(`Numer id filmu: ${movieId}`);
+    // Notiflix.Notify.info(`Numer id filmu: ${movieId}`);
 
     //poczekaj aż skończy pobierać!!!
     const videoDetails = await fetchMovieById(movieId);
     console.log(videoDetails);
 
     //tworzę HTMLa
-    let html = '';
-    html += `
-    <div id=${videoDetails.id} class="movie-card">
-      <img class="movie-card__image" src="${videoDetails.poster_path}" alt="${videoDetails.title}" loading="lazy"/>
-      <div class="movie-card__text">
-        <h2 class="movie-card__text--title">${videoDetails.overview}</h2>
-          <p class="movie-card__text--info">${videoDetails.genres}</p>
-          <p class="movie-card__text--vote">${videoDetails.vote_average}</p>
-      </div>
+    html = '';
+    html += `<div class="leftSideDetails">
+    <img
+      src="https://image.tmdb.org/t/p/w300/${videoDetails.poster_path}"
+      alt="${videoDetails.title}" class="modal-image"
+      loading="lazy"
+    />
+  </div>
+  <div class="rightSideDetails">
+    <h2 class="film-title">${videoDetails.title}</h2>
+    <div class="film-info">
+      <p>
+        Vote/Votes <span class="film-rating">${videoDetails.vote_average}</span
+        ><span class="slash">/</span><span class="votes">${videoDetails.vote_count}</span>
+      </p>
+      <p>Popularity<span class="film-popularity">${videoDetails.popularity}</span></p>
+      <p>Original Title<span class="film-original-title">${videoDetails.original_title}</span></p>
+      <p>Genre<span class="film-genere">${videoDetails.genres[0].name}</span></p>
     </div>
-    `;
-    console.log(html);
-    setTimeout(() => {
-      Notiflix.Notify.success(videoDetails.overview);
-    }, 2000);
+    <div class="film-description">
+      <p class="about">About</p>
+      <p>${videoDetails.overview}</p>
+    </div>
+    <div class="modalButton">
+        <button class="watched-btn-modal" type="button">ADD TO WATCHED</button>
+        <button class="queue-btn-modal" type="button">ADD TO QUEUE</button>
+      </div>
+  </div>`;
+
+    //console.log(html);
+    // setTimeout(() => {
+    //   Notiflix.Notify.success(videoDetails.overview);
+    // }, 2000);
+
+    //wyświetl okno modala ze SZCZEGÓŁAMI - funkcja od KASI :)
+    openModal();
   }
 }
 
