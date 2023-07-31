@@ -37,19 +37,24 @@
 .J-paginationjs-go-pagenumber {
   font-size: 12px;
   font-weight: 600;
-  width: 130px;
+  width: 180px;
   text-align: center;
   color: $orange;
   border-color: $orange;
   border-radius: 5%;
   border-width: 2px;
   border-style: dotted;
+  // &::-webkit-outer-spin-button,
+  // &::-webkit-inner-spin-button {
+  //   -webkit-appearance: none;
+  //   margin: 0;
+  // }
+  // &::-moz-appearance {
+  //   -moz-appearance: textfield;
+  // }
   &:invalid {
     border-color: $red;
     color: $red;
-  }
-  &:not(:placeholder-shown) {
-    width: 70px;
   }
   &:focus {
     outline: none;
@@ -58,6 +63,12 @@
     font-weight: 400;
   }
 }
+
+// input[type='number']::-webkit-inner-spin-button,
+// input[type='number']::-webkit-outer-spin-button {
+//   -webkit-appearance: none;
+//   margin: 0; /* Removes leftover margin */
+// }
 
 .paginationjs-pages ul {
   display: flex;

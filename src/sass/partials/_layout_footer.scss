@@ -67,6 +67,10 @@ footer {
     cursor: pointer;
     outline: inherit;
     text-decoration: underline;
+    &:hover,
+    &:focus {
+      color: $orange;
+    }
   }
 }
 
