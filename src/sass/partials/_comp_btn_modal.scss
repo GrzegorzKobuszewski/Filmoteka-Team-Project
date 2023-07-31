@@ -1,33 +1,40 @@
-.button{
-border-radius: 5px;
-border: 1px solid $white;
-text-align: center;
-font-size:12px;
-font-weight: 500;
-line-height: 16px;
-padding-top: 14px;
-padding-bottom: 12px;
-width: 130px;
-&:hover,
-&:focus {
-background-color: $orange;
-border: 1px solid transparent;
-box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-cursor: pointer;
-color: $white;
-    }
-    &--library {
-        background: transparent;
-        color: $white;
-      }
-    }
-    
-    @media screen and (min-width: 768px){
-      .button {
-        width: 152px;
-                }
-      }
-    
-    
-    
-  
+.button {
+  border-radius: 5px;
+  border: 1px solid $white;
+  text-align: center;
+  font-size:12px;
+  font-weight: 500;
+  line-height: 16px;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  width: 130px;
+
+  &:hover,
+  &:focus {
+    background-color: $orange;
+    border: 1px solid transparent;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    cursor: pointer;
+    color: $white;
+  }
+
+  &--library {
+    background: transparent;
+    color: $white;
+  }
+
+  &--active {
+    background-color: $orange;
+    border: none;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    cursor: pointer;
+    color:$white;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    width: 152px;
+  }
+}
+

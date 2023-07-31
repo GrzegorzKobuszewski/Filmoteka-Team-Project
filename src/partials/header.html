@@ -17,13 +17,15 @@
         <a href="./library.html" class="header__highlight">MY LIBRARY</a>
       </nav>
     </div>
-    <form class="header__form"> 
+    
+    <form class="header__form" id="search-form"> 
+      <div class = "header_button_search">
       <input class="header__form__input" type="text" placeholder="Movie search" />
-     <button type="submit" class="header__form__button" >
-      <svg class="header__form__icon" width="16" height="16">
+        <svg class="header__form__icon" width="16" height="16" onclick="submitSearch()"> 
         <use href="./images/icons.svg#icon-search-2"></use>
-      </svg>
-    </button>
+      </svg> 
+      <button type="submit" id="submit-button-search" hidden>submit</button>
+
     </form>
   </div>
 </header>

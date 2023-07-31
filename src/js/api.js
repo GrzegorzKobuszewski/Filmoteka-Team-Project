@@ -78,7 +78,6 @@ async function createMyMovieList(listName, listDescription, language) {
       language: language,
     }),
   };
-
   const response = await fetch(url, options);
   return response;
 }
