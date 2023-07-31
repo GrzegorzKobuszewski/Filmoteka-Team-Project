@@ -321,8 +321,6 @@ galleryContainer.addEventListener('click', event => {
   if (event.target.classList.contains('movie-card__image')) {
     // Wywołujemy funkcję tylko wtedy, gdy kliknięcie było na obrazie
     handleMovieImageClick(event);
-  } else if (event.target.classList.contains('watched-btn-modal')) {
-    handleWatchedBtnClick(event);
   }
 });
 
