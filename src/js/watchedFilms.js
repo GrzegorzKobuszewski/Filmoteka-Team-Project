@@ -6,9 +6,9 @@ if (localStorageWatchedFilms === null) {
 }
 
 //słuchanie czy kliknie w WatchedBtn:
-function handleWatchedBtnClick(event) {
+async function handleWatchedBtnClick(event) {
   const watchedBtn = event.target.closest('.watched-btn-modal');
-  let movieId = watchedBtn.getAttribute('data-id');
+  let movieId = await watchedBtn.getAttribute('data-id');
   if (!localStorageWatchedFilms.includes(movieId)) {
     localStorageWatchedFilms.push(movieId);
     localStorage.setItem('watchedFilms', JSON.stringify(localStorageWatchedFilms));
@@ -19,14 +19,12 @@ function handleWatchedBtnClick(event) {
 
 const modalEl = document.querySelector('.modal');
 
-// Dodajemy słuchacza zdarzeń dla całego modala
 modalEl.addEventListener('click', event => {
-  // Sprawdzamy, czy kliknięcie było na przycisku watched
   if (event.target.classList.contains('watched-btn-modal')) {
-    // Wywołujemy funkcję tylko wtedy, gdy kliknięto przycisk
     handleWatchedBtnClick(event);
   }
 });
 
-let filmsArr = JSON.parse(localStorage.getItem('watchedFilms'));
-console.log(filmsArr);
+// Tablina obejrzanych filmów
+export let watchedArray = JSON.parse(localStorage.getItem('watchedFilms'));
+// console.log(watchedArray);

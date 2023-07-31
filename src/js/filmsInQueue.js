@@ -27,6 +27,6 @@ modalElem.addEventListener('click', event => {
     handleInQueueBtnClick(event);
   }
 });
-
-let inQueueArray = JSON.parse(localStorage.getItem('filmsInQueue'));
-console.log(inQueueArray);
+// filmy w kolejce
+export let inQueueArray = JSON.parse(localStorage.getItem('filmsInQueue'));
+// console.log(inQueueArray);
