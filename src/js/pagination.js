@@ -6,7 +6,7 @@ import { openModal } from './modal';
 export let html = '';
 const urlSearch = 'https://api.themoviedb.org/3/search/movie';
 const urlStart = 'https://api.themoviedb.org/3/movie/popular';
-let typeOfAPI = 'start'; // start, search, watched, queue
+export let typeOfAPI = 'start'; // start, search, watched, queue
 const options = {
   method: 'GET',
   headers: {
@@ -15,12 +15,16 @@ const options = {
       'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MDc5M2YzM2IyY2RmNjAxMmUwZjE5MTQ2YTc1MDQxZCIsInN1YiI6IjY0YmFlZTFhNDM1MDExMDBjNzExMGNmYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jo-IqaDv0MIxcDvkX6ICfBTex8-DDD-e2pyktP9k_W4',
   },
 };
+const paginElement = document.getElementById('pagination-container');
 let moviesArray = []; // Tablica dla wszystkich filmów
+export let watchedArray = []; // tablica filmów do zobaczenia
+export let myVideosArray = []; // tablica filmów ulubionych
 let moviesPerPage = 10;
 let totalResults = 1; //całkowita liczba wyników - filmów - max 10000 videos!!!
 let isLoading = false;
 let textToSearch = '';
 let urlNoCover = new URL('../images/nocover.jpg', import.meta.url);
+let loadingFirstPage = true;
 
 //pobierz nazwy gatunków - tylko przy wczytywaniu strony:
 const genresArray = [
@@ -46,57 +50,76 @@ const genresArray = [
 ];
 
 // pobierz totale i stwórz tablicę pustych obiektów przy starcie strony
-function getStartMovies() {
+export function getStartMovies() {
   let url = '';
-  if (typeOfAPI === 'start') url = urlStart;
-  if (typeOfAPI === 'search') url = `${urlSearch}?page=1&query=${textToSearch}`;
+  if (typeOfAPI === 'start') {
+    url = urlStart;
+    currentMoviesArray = moviesArray; //to ma być przypisanie referencji -
+  }
+  if (typeOfAPI === 'search') {
+    url = `${urlSearch}?page=1&query=${textToSearch}`;
+    currentMoviesArray = moviesArray; //to ma być przypisanie referencji -
+  }
+  if (typeOfAPI === 'watched') {
+    currentMoviesArray = watchedArray; //to ma być przypisanie referencji -
+  }
+  if (typeOfAPI === 'queue') {
+    currentMoviesArray = myVideosArray; //to ma być przypisanie referencji -
+  }
 
-  fetch(url, options)
-    .then(res => res.json())
-    .then(json => {
-      //console.log(json);
-      totalResults = json.total_results;
-      if (totalResults === 0) {
-        Notiflix.Notify.failure('Unfortunately, no movies were found!');
-        // //wyzeruj tablicę filmów
-        moviesArray = [];
-        totalResults = 0;
-        // pagination.page = 1;
-        // debugger;
-      }
-      // ograniczenie API do 10000 !!! - Zobacz dokumentację API
-      if (totalResults > 10000) {
-        totalResults = 10000;
-      }
-      for (let i = 1; i <= totalResults; i++) {
-        moviesArray.push(i);
-      }
-
-      console.log(json.results);
-
-      for (let i = 1; i <= totalResults && i <= 20; i++) {
-        // Zamień gatunki ID na stringi:
-        let genresNames = findNameById(json.results[i - 1].genre_ids[0], genresArray);
-        genresNames += `, `;
-        genresNames += findNameById(json.results[i - 1].genre_ids[1], genresArray);
-
-        moviesArray[i - 1] = {
-          id: json.results[i - 1].id,
-          title: json.results[i - 1].title,
-          poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
-          genre: genresNames,
-          release: json.results[i - 1].release_date,
-          vote: json.results[i - 1].vote_average.toFixed(2),
-        };
-        if (json.results[i - 1].poster_path === null) {
-          moviesArray[i - 1].poster = urlNoCover;
-          // test
+  //pobierz dane jeśli typeOfAPI === 'start' lub 'search' - w przeciwnym razie dane pobieraj z tablic
+  if (typeOfAPI === 'start' || typeOfAPI === 'search') {
+    fetch(url, options)
+      .then(res => res.json())
+      .then(json => {
+        //console.log(json);
+        totalResults = json.total_results;
+        if (totalResults === 0) {
+          Notiflix.Notify.failure('Unfortunately, no movies were found!');
+          // //wyzeruj tablicę filmów
+          moviesArray = [];
+          totalResults = 0;
+          // pagination.page = 1;
+          // debugger;
         }
-      }
+        // ograniczenie API do 10000 !!! - Zobacz dokumentację API
+        if (totalResults > 10000) {
+          totalResults = 10000;
+        }
+        for (let i = 1; i <= totalResults; i++) {
+          moviesArray.push(i);
+        }
 
-      paginationInit();
-    })
-    .catch(err => console.error('error:' + err));
+        console.log(json.results);
+
+        for (let i = 1; i <= totalResults && i <= 20; i++) {
+          // Zamień gatunki ID na stringi:
+          let genresNames = findNameById(json.results[i - 1].genre_ids[0], genresArray);
+          genresNames += `, `;
+          genresNames += findNameById(json.results[i - 1].genre_ids[1], genresArray);
+
+          moviesArray[i - 1] = {
+            id: json.results[i - 1].id,
+            title: json.results[i - 1].title,
+            poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
+            genre: genresNames,
+            release: json.results[i - 1].release_date,
+            vote: json.results[i - 1].vote_average.toFixed(2),
+          };
+          if (json.results[i - 1].poster_path === null) {
+            moviesArray[i - 1].poster = urlNoCover;
+            // test
+          }
+        }
+
+        paginationInit();
+      })
+      .catch(err => console.error('error:' + err));
+  } else {
+    // typeOfAPI === 'watched' lub 'queue'
+    // wystarczu odświeżyć paginację - dane będą pobierane z tablicy:
+    paginationInit();
+  }
 }
 
 //wyświetlanie galerii przy klikaniu w paginację i szukaniu filmów
@@ -111,44 +134,46 @@ function getMovies(page) {
   if (typeOfAPI === 'start') url = `${urlStart}?page=${page}`;
   if (typeOfAPI === 'search') url = `${urlSearch}?page=${page}&query=${textToSearch}`;
 
-  isLoading = true;
+  //pobieraz dane z API tylko jeśli start lub search
+  if (typeOfAPI === 'start' || typeOfAPI === 'search') {
+    isLoading = true;
+    fetch(url, options)
+      .then(res => {
+        //console.log(`Jest FETCH page ${page}`);
+        return res.json();
+      })
+      .then(json => {
+        //console.log(`Jest then po Fetch, page: ${page}`);
 
-  fetch(url, options)
-    .then(res => {
-      //console.log(`Jest FETCH page ${page}`);
-      return res.json();
-    })
-    .then(json => {
-      //console.log(`Jest then po Fetch, page: ${page}`);
+        for (let i = 1; i <= json.results.length; i++) {
+          // Zamień gatunki ID na stringi:
+          let genresNames = findNameById(json.results[i - 1].genre_ids[0], genresArray);
+          genresNames += `, `;
+          genresNames += findNameById(json.results[i - 1].genre_ids[1], genresArray);
 
-      for (let i = 1; i <= json.results.length; i++) {
-        // Zamień gatunki ID na stringi:
-        let genresNames = findNameById(json.results[i - 1].genre_ids[0], genresArray);
-        genresNames += `, `;
-        genresNames += findNameById(json.results[i - 1].genre_ids[1], genresArray);
-
-        moviesArray[20 * (page - 1) + i - 1] = {
-          id: json.results[i - 1].id,
-          title: json.results[i - 1].title,
-          poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
-          genre: genresNames,
-          release: json.results[i - 1].release_date,
-          vote: json.results[i - 1].vote_average.toFixed(2),
-        };
-        if (json.results[i - 1].poster_path === null) {
-          moviesArray[20 * (page - 1) + i - 1].poster = urlNoCover;
+          moviesArray[20 * (page - 1) + i - 1] = {
+            id: json.results[i - 1].id,
+            title: json.results[i - 1].title,
+            poster: 'https://image.tmdb.org/t/p/w300' + json.results[i - 1].poster_path,
+            genre: genresNames,
+            release: json.results[i - 1].release_date,
+            vote: json.results[i - 1].vote_average.toFixed(2),
+          };
+          if (json.results[i - 1].poster_path === null) {
+            moviesArray[20 * (page - 1) + i - 1].poster = urlNoCover;
+          }
         }
-      }
-      isLoading = false;
-    })
-    .catch(err => {
-      console.error('Błąd! Error:' + err);
-    });
+        isLoading = false;
+      })
+      .catch(err => {
+        console.error('Błąd! Error:' + err);
+      });
+  }
 }
 //pobierz pierwsze filmy (20) przy wczytaniu strony:
 getStartMovies();
 
-function paginationInit() {
+export function paginationInit() {
   $('#pagination-container').pagination({
     // Daliśmy pustą klasę stylów do każej klasy domyślnej z biblioteki paginationjs, ponieważ generowały błędy w projekcie - hipoteza częściowo potwierdzona
     // Pamiętaj, że zakomentowanie klasy sprawi, że biblioteka odniesie się do stylów domyślnych
@@ -162,7 +187,7 @@ function paginationInit() {
     // pageClassName: 'emptyClass.css',
     // prevClassName: 'emptyClass.css',
     // nextClassName: 'emptyClass.css',
-    dataSource: moviesArray,
+    dataSource: currentMoviesArray,
     pageSize: moviesPerPage,
     pageRange: 1,
     hideFirstOnEllipsisShow: true,
@@ -193,6 +218,7 @@ function paginationInit() {
     },
     callback: function (data, pagination) {
       //console.log(data);
+      if (pagination.pageNumber > 1) loadingFirstPage = false;
       setTimeout(() => {
         //wylicz który element tablicy moviesArray
         // debugger;
@@ -228,6 +254,16 @@ function template(data) {
       </div>
     </li>
 `;
+  }
+  // przewiń do dołu strony
+  if (loadingFirstPage === false) {
+    setTimeout(function () {
+      //debugger;
+      if (paginElement) {
+        // Wywołujemy metodę scrollIntoView() na elemencie
+        paginElement.scrollIntoView();
+      }
+    }, 1000);
   }
   return html + ' </ul>';
 }
