@@ -13,9 +13,8 @@
   font-size: 12px;
   font-weight: 500;
   box-sizing: initial;
-  &-nav {
-    display: none;
-  }
+  position: relative;
+
   &-go-input {
     display: none;
   }
@@ -29,15 +28,32 @@
   }
 }
 
+// .positionjs .emptyClass.css {
+//   position: relative;
+// }
+
+// .positionjs .emptyClass.css > .emptyClass.css-nav .J-paginationjs-nav {
+//   position: absolute;
+//   top: 5px;
+//   right: 10px;
+// }
+
 .emptyClass.css-go-input {
   border-radius: 2%;
   border-color: $orange;
 }
 
+.J-paginationjs-nav {
+  order: 3;
+  color: $orange;
+  font-size: 9px;
+}
+
 .J-paginationjs-go-pagenumber {
   font-size: 12px;
   font-weight: 600;
-  width: 180px;
+  width: 90px;
+  height: 20px;
   text-align: center;
   color: $orange;
   border-color: $orange;
