@@ -8,7 +8,7 @@
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    row-gap: 35px;
     justify-content: center;
     flex-direction: column;
   }
@@ -19,7 +19,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   position: relative;
   &__image {
     border-radius: 30px;
@@ -28,10 +28,10 @@
     box-shadow: 1px 1px 24px -6px rgba(0, 0, 0, 1);
     &:hover,
     &:focus {
-      opacity: 0.6;
       transition: $shift;
       scale: 103%;
-      box-shadow: 1px 1px 24px 7px rgba(255, 107, 8, 1);
+      border: 5px solid $orange;
+      // box-shadow: 1px 1px 24px 7px rgba(255, 107, 8, 1);
     }
   }
   &__text {
@@ -40,10 +40,13 @@
     line-height: 16px;
     text-align: left;
     font-family: $main-font;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &--title {
       color: $black;
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: 16px;
     }
     &--info {
       color: $orange;
@@ -82,7 +85,8 @@
     }
     &_movies {
       flex-direction: row;
-      gap: 25px;
+      row-gap: 40px;
+      column-gap: 25px;
       width: 768px;
       justify-content: center;
     }
@@ -91,7 +95,7 @@
   .movie-card {
     flex-basis: calc((100% - 25px) / 2);
     max-width: 336px;
-    gap: 8px;
+    gap: 14px;
   }
 }
 
@@ -103,7 +107,8 @@
     &_movies {
       flex-direction: row;
       padding-top: 60px;
-      gap: 30px;
+      row-gap: 50px;
+      column-gap: 30px;
       justify-content: center;
     }
   }
@@ -111,7 +116,7 @@
   .movie-card {
     flex-basis: calc((100% - 60px) / 3);
     max-width: 395px;
-    gap: 16px;
+    gap: 20px;
     &__text {
       font-size: 20px;
       line-height: 2;
