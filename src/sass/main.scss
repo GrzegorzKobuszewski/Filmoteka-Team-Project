@@ -46,4 +46,5 @@
 // Style paginacji
 @import '../sass/partials/comp_pagination';
 
-@import './../../node_modules/paginationjs/dist/pagination.css';
+// Style dla przycisku go-top, pojawiającego się w prawym dolnym rogu po przescrollowaniu strony
+@import '../sass/partials/comp_btn_go_top';

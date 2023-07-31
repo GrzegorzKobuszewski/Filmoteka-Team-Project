@@ -67,10 +67,14 @@ footer {
     cursor: pointer;
     outline: inherit;
     text-decoration: underline;
+    &:hover,
+    &:focus {
+      color: $orange;
+    }
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .footer {
     flex-wrap: nowrap;
     flex-direction: row;

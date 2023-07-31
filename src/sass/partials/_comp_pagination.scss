@@ -1,3 +1,159 @@
+.emptyClass {
+  color: #000;
+}
+
 .paginationjs {
+  font-size: $main-font;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  line-height: 1.33;
+  font-size: 12px;
+  font-weight: 500;
+  box-sizing: initial;
+  &-nav {
+    display: none;
+  }
+  &-go-input {
+    display: none;
+  }
+  &-pages {
+    color: $black;
+    margin-left: 0px;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+  }
+}
+
+.emptyClass.css-go-input {
+  border-radius: 2%;
+  border-color: $orange;
+}
+
+.J-paginationjs-go-pagenumber {
+  font-size: 12px;
+  font-weight: 600;
+  width: 180px;
+  text-align: center;
+  color: $orange;
+  border-color: $orange;
+  border-radius: 5%;
+  border-width: 2px;
+  border-style: dotted;
+  // &::-webkit-outer-spin-button,
+  // &::-webkit-inner-spin-button {
+  //   -webkit-appearance: none;
+  //   margin: 0;
+  // }
+  // &::-moz-appearance {
+  //   -moz-appearance: textfield;
+  // }
+  &:invalid {
+    border-color: $red;
+    color: $red;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:placeholder-shown {
+    font-weight: 400;
+  }
+}
+
+// input[type='number']::-webkit-inner-spin-button,
+// input[type='number']::-webkit-outer-spin-button {
+//   -webkit-appearance: none;
+//   margin: 0; /* Removes leftover margin */
+// }
+
+.paginationjs-pages ul {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.pagination-container {
+  padding-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .pagination-container {
+    padding-bottom: 60px;
+  }
+  .paginationjs {
+    font-size: 14px;
+  }
+  .J-paginationjs-go-pagenumber {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pagination-container {
+    padding-bottom: 60px;
+  }
+  .paginationjs {
+    font-size: 14px;
+  }
+  .J-paginationjs-go-pagenumber {
+    font-size: 14px;
+  }
+}
+
+// below copied and edited styles from library : node_modules/paginationjs/dist/pagination.css  ---
+
+.paginationjs .paginationjs-pages li {
+  float: left;
+  border: none;
+  list-style: none;
+}
+.paginationjs .paginationjs-pages li > a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.paginationjs .paginationjs-pages li > a:hover,
+.paginationjs .paginationjs-pages li > a:focus {
+  // background: rgba($orange, 30%);
+  color: $orange;
+  // border-radius: 5px;
+  // width: 40px;
+  // height: 40px;
+  // line-height: 40px;
+  transition: color $shift;
+  scale: 200%;
+}
+
+.paginationjs .paginationjs-pages li.active > a {
+  background: $orange;
+  color: $white;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  transition: none;
+  scale: 100%;
+}
+
+.paginationjs .paginationjs-pages li.disable > a {
+  color: $black;
+  cursor: not-allowed;
+  transition: none;
+  scale: 100%;
+}
+
+.paginationjs .paginationjs-pages li:first-child:not(.J-paginationjs-page),
+.paginationjs .paginationjs-pages li:last-child {
+  background-color: $gray-footer-bg;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
 }
