@@ -333,8 +333,8 @@ async function handleMovieImageClick(event) {
       <p>${videoDetails.overview}</p>
     </div>
     <div class="modalButton">
-        <button class="watched-btn-modal" type="button">ADD TO WATCHED</button>
-        <button class="queue-btn-modal" type="button">ADD TO QUEUE</button>
+        <button class="watched-btn-modal" data-id ='${videoDetails.id} 'type="button">ADD TO WATCHED</button>
+        <button class="queue-btn-modal" data-id ='${videoDetails.id} 'type="button">ADD TO QUEUE</button>
       </div>
   </div>`;
 
