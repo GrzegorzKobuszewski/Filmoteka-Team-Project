@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { renderFilmDetails } from './watchedFilms';
 
 let localStorageInQueue = JSON.parse(localStorage.getItem('filmsInQueue'));
 if (localStorageInQueue === null) {
@@ -30,3 +31,4 @@ modalElem.addEventListener('click', event => {
 // filmy w kolejce
 export let inQueueArray = JSON.parse(localStorage.getItem('filmsInQueue'));
 // console.log(inQueueArray);
+// renderFilmDetails(inQueueArray);

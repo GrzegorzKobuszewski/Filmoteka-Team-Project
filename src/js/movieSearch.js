@@ -3,9 +3,9 @@ import { state } from './state';
 import Notiflix from 'notiflix';
 
 const searchFormEl = document.querySelector('.header__form');
-console.log(searchFormEl);
+// console.log(searchFormEl);
 const inputEl = document.querySelector('.header__form__input');
-console.log(inputEl);
+// console.log(inputEl);
 //const moviesEl = document.querySelector('tutaj_klasa_galerii')
 
 //przeniosłem kod wyszukiwania do pliku pagination.js
