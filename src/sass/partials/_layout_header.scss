@@ -51,10 +51,17 @@
   &__highlight{
     transition:0.2s;
     &:hover{
-      color:$white;
-      background: $red;
-      box-shadow:$box-shadow;
+      
       transform: scale(1.15)
+    }
+
+  
+  }
+  &__highlight-title{
+    transition:0.2s;
+    &:hover{
+      
+      transform: scale(1.07)
     }
 
   
@@ -80,6 +87,41 @@
     }
   
   }
+  &__inactive{
+    transition:0.2s;
+ 
+    
+  &::before, &::after{
+    position: absolute;
+    bottom: -2px;
+    border-radius:2px;
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: $red;
+    content: "";
+  }
+
+  &::before{
+    left: 0;
+  }
+
+  &::after{
+    right: 0;
+    transition: width 0.2s;
+  }
+  
+  &:hover::before{
+    width: 100%;
+    transition: width 0.2s;
+  }
+
+  &:hover::after{
+    background-color: transparent;
+    width: 100%;
+  }
+}
+  
   &__logo{
 animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 fill: transparent;
@@ -115,12 +157,7 @@ fill: transparent;
         cursor: pointer;
       }
       }
-      &__button{
-        background: transparent;
-        width: 20px;
-        height: 20px;
-        display: contents;
-      }
+      
     
     }
 
