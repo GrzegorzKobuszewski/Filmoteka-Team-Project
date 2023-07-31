@@ -5,6 +5,8 @@ import './js/footerModal.js';
 import './js/api.js';
 import { createMyMovieList, fetchTodayPopularMovies } from './js/api.js';
 import './js/buttonGoTop.js';
+import './js/watchedFilms.js';
+import './js/filmsInQueue.js';
 
 //example of todayPopularMovies
 // fetchTodayPopularMovies().then(response => {

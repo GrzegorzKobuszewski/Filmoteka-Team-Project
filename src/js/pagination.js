@@ -297,8 +297,8 @@ async function handleMovieImageClick(event) {
       <p>${videoDetails.overview}</p>
     </div>
     <div class="modalButton">
-        <button class="watched-btn-modal" type="button">ADD TO WATCHED</button>
-        <button class="queue-btn-modal" type="button">ADD TO QUEUE</button>
+        <button class="watched-btn-modal" data-id ='${videoDetails.id} 'type="button">ADD TO WATCHED</button>
+        <button class="queue-btn-modal" data-id ='${videoDetails.id} 'type="button">ADD TO QUEUE</button>
       </div>
   </div>`;
 
@@ -321,6 +321,8 @@ galleryContainer.addEventListener('click', event => {
   if (event.target.classList.contains('movie-card__image')) {
     // Wywołujemy funkcję tylko wtedy, gdy kliknięcie było na obrazie
     handleMovieImageClick(event);
+  } else if (event.target.classList.contains('watched-btn-modal')) {
+    handleWatchedBtnClick(event);
   }
 });
 
