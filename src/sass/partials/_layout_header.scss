@@ -1,3 +1,16 @@
+@keyframes animate360 {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+
 .header {
   width: 100%;
   background-image: url('../images/background.png');
@@ -32,8 +45,19 @@
     &__name {
       display: none;
       font-size: 37,5;
+      
     }
-    
+  }
+  &__highlight{
+    transition:0.2s;
+    &:hover{
+      color:$white;
+      background: $red;
+      box-shadow:$box-shadow;
+      transform: scale(1.15)
+    }
+
+  
   }
   &__nav {
     display: flex;
@@ -56,11 +80,21 @@
     }
   
   }
+  &__logo{
+animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+fill: transparent;
+
+  }
 
   &__form {
     position: relative;
     max-width: 320px;
     margin: 0 auto;
+    &:hover{
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    
     &__input {
       width: 100%;
       background-color: transparent;
@@ -68,14 +102,12 @@
       border-bottom: 1px solid $white;
       padding: 0;
       color: $white;
-      &:hover{
-        
-        cursor: pointer;
-      }
+      
       &::placeholder {
         color: $white;
       }
     }
+    
     &__icon {
       position: absolute;
       right: 0;
@@ -83,9 +115,16 @@
         cursor: pointer;
       }
       }
-      
+      &__button{
+        background: transparent;
+        width: 20px;
+        height: 20px;
+        display: contents;
+      }
+    
     }
-  }
+
+
 
 
 @media screen and (min-width:768px) {
@@ -109,4 +148,4 @@
       }
     }
   }
-}
+}}
