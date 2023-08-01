@@ -215,7 +215,7 @@ export function paginationInit() {
     // nextText: 'next',
     showGoInput: true,
     formatGoInput:
-      '<input type= "number" class= "J-paginationjs-go-pagenumber" placeholder="find page in total <%= totalPage %>" min="1" max="1000" >',
+      '<input type= "number" class= "J-paginationjs-go-pagenumber" placeholder="search page in total <%= totalPage %>" min="1" max="1000" >',
     // showNavigator: true,
     // formatNavigator: 'total pages: <%= totalPage %>',
     // beforeGoInputOnEnter: ,
