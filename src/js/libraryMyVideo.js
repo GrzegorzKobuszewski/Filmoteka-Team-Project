@@ -22,7 +22,6 @@ headerLibrary.addEventListener('click', event => {
 
 function showWatched() {
   Notiflix.Notify.success('już pokazuję Watches');
-  
 }
 
 function showQueue() {

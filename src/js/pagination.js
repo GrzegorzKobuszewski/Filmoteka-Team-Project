@@ -317,6 +317,7 @@ if (typeOfAPI === 'start' || typeOfAPI === 'search') {
 // *********************************************** KOD DLA MODALA ZE SZCZEGÓŁAMI ***********************************
 //słuchanie czy klknie w film:
 async function handleMovieImageClick(event) {
+  let videoDetails;
   // Pobieramy element <li> zawierający kliknięty obraz
   const movieCard = event.target.closest('.movie-card');
   if (movieCard) {
@@ -326,14 +327,28 @@ async function handleMovieImageClick(event) {
     // Notiflix.Notify.info(`Numer id filmu: ${movieId}`);
 
     //poczekaj aż skończy pobierać!!!
-    const videoDetails = await fetchMovieById(movieId);
+    videoDetails = await fetchMovieById(movieId);
     console.log(videoDetails);
 
-    //tworzę HTMLa
-    html = '';
-    html += `<div class="leftSideDetails">
+    //poprawka dla przypadku, w którym nie istnieje w bazie gataunkek
+    // debugger;
+    if (videoDetails.genres.length === 0) {
+      videoDetails.genres.push({ name: 'noname ;)' });
+    }
+    //poprawka dla przypadku, w którym nie istnieje path dla cover'about
+
+    if (videoDetails.poster_path === null) {
+      const newPosterPath = new URL('../images/nocover.jpg', import.meta.url);
+      videoDetails.poster_path = newPosterPath;
+    } else {
+      videoDetails.poster_path = `https://image.tmdb.org/t/p/w300/${videoDetails.poster_path}`;
+    }
+  }
+  //tworzę HTMLa
+  html = '';
+  html += `<div class="leftSideDetails">
     <img
-      src="https://image.tmdb.org/t/p/w300/${videoDetails.poster_path}"
+      src="${videoDetails.poster_path}"
       alt="${videoDetails.title}" class="modal-image"
       loading="lazy"
     />
@@ -359,14 +374,13 @@ async function handleMovieImageClick(event) {
       </div>
   </div>`;
 
-    //console.log(html);
-    // setTimeout(() => {
-    //   Notiflix.Notify.success(videoDetails.overview);
-    // }, 2000);
+  //console.log(html);
+  // setTimeout(() => {
+  //   Notiflix.Notify.success(videoDetails.overview);
+  // }, 2000);
 
-    //wyświetl okno modala ze SZCZEGÓŁAMI - funkcja od KASI :)
-    openModal();
-  }
+  //wyświetl okno modala ze SZCZEGÓŁAMI - funkcja od KASI :)
+  openModal();
 }
 
 // Pobieramy kontener galerii filmów
