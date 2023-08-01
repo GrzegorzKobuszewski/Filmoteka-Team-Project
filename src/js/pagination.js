@@ -61,8 +61,8 @@ const genresArray = [
 
 // pobierz totale i stwórz tablicę pustych obiektów przy starcie strony
 export function getStartMovies() {
-  console.log('tablica z filmami');
-  console.log(watchedVideosArray);
+  //console.log('tablica z filmami');
+  //console.log(watchedVideosArray);
   let url = '';
 
   if (typeOfAPI === 'start') {
