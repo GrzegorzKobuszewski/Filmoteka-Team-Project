@@ -32,11 +32,11 @@ closeBtn.addEventListener('click', closeModal);
 //   }
 // });
 
-// window.onclick = function (e) {
-//   if (e.target === modal) {
-//     modal.style.display = 'none';
-//   }
-// };
+window.onclick = function (e) {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+};
 
 window.onkeydown = function (e) {
   if (e.key === 'Escape') {

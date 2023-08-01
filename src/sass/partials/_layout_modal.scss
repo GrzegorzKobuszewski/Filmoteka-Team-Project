@@ -58,7 +58,7 @@
   @media screen and (max-width: 767px) {
     width: 240px;
     height: 357px;
-    flex-shrink: 0;
+    margin: auto;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     width: 264px;
@@ -77,7 +77,7 @@
   display: block;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 5px;
   font-size: 30px;
   cursor: pointer;
   padding: 5px;
@@ -86,8 +86,9 @@
   text-align: center;
 }
 
-.close-btn:hover {
-  color: $gray-modal-tex;
+.close-btn:hover,
+.close-btn:focus {
+  color: $orange;
   cursor: pointer;
 }
 
@@ -137,7 +138,9 @@
 }
 
 .watched-btn-modal:hover,
-.queue-btn-modal:hover {
+.queue-btn-modal:hover,
+.watched-btn-modal:focus,
+.queue-btn-modal:focus {
   background-color: $orange-buttons;
   color: $white;
   cursor: pointer;
@@ -346,9 +349,9 @@
 }
 
 .rightSideDetails {
-  padding-top: 28px;
+  padding-top: 20px;
   @media screen and (max-width: 767px) {
-    padding-left: 0px;
+    padding-left: 0;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     padding-left: 16px;
