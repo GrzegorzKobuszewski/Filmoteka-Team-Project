@@ -47,20 +47,35 @@ const watchedVideosArray = []; //do tej tablicy bedę wczytywać filmy ze szczeg
 for (let i = 1; i <= watchedIdArray.length; i++) {
   watchedVideosArray.push(i);
 }
-
+let filmDetails;
 async function renderFilmDetails(arr) {
   // iteruj po tablicy ID ków
 
   for (let i = 0; i < arr.length; i++) {
-    const filmDetails = await fetchMovieById(arr[i]);
+    filmDetails = await fetchMovieById(arr[i]);
     //wczytane szczegóły filmu wczytaj do tablicy
+    // debugger;
+    //poprawka dla przypadku, w którym nie istnieje path dla cover'a
+
+    if (filmDetails.poster_path === null) {
+      const newPosterPath = new URL('../images/nocover.jpg', import.meta.url);
+      filmDetails.poster_path = newPosterPath;
+    } else {
+      filmDetails.poster_path = `https://image.tmdb.org/t/p/w300/${filmDetails.poster_path}`;
+    }
+
+    //poprawka na genres === null
+    if (filmDetails.genres.length === 0) {
+      filmDetails.genres.push({ name: 'noname' });
+    }
+
     // debugger;
     watchedVideosArray[i] = {
       year: filmDetails.release_date,
       id: filmDetails.id,
-      poster: 'https://image.tmdb.org/t/p/w300' + filmDetails.poster_path,
+      poster: filmDetails.poster_path,
       title: filmDetails.title,
-      genre: filmDetails.genresNames,
+      genre: filmDetails.genres[0].name,
       vote: filmDetails.vote_average.toFixed(2),
     };
   }
