@@ -3,10 +3,10 @@ import pagination from 'paginationjs';
 import Notiflix from 'notiflix';
 import { fetchMovieById } from './api.js';
 import { openModal } from './modal';
+import { watchedVideosArray } from './watchedFilms.js';
 export let html = '';
 const urlSearch = 'https://api.themoviedb.org/3/search/movie';
 const urlStart = 'https://api.themoviedb.org/3/movie/popular';
-export let typeOfAPI = 'start'; // start, search, watched, queue
 const options = {
   method: 'GET',
   headers: {
@@ -16,7 +16,7 @@ const options = {
   },
 };
 const paginElement = document.getElementById('pagination-container');
-let moviesArray = []; // Tablica dla wszystkich filmów
+export let moviesArray = []; // Tablica dla wszystkich filmów
 export let watchedArray = []; // tablica filmów do zobaczenia
 export let myVideosArray = []; // tablica filmów ulubionych
 let moviesPerPage = 10;
@@ -25,6 +25,16 @@ let isLoading = false;
 let textToSearch = '';
 let urlNoCover = new URL('../images/nocover.jpg', import.meta.url);
 let loadingFirstPage = true;
+
+///zapisz typeOfAPI do locale localStorage
+
+let typeOfAPI;
+// debugger;
+typeOfAPI = localStorage.getItem('typeOfAPI');
+if (typeOfAPI === null) {
+  localStorage.setItem('typeOfAPI', 'start');
+  typeOfAPI = 'start';
+} // start, search, watched, queue}
 
 //pobierz nazwy gatunków - tylko przy wczytywaniu strony:
 const genresArray = [
@@ -51,23 +61,24 @@ const genresArray = [
 
 // pobierz totale i stwórz tablicę pustych obiektów przy starcie strony
 export function getStartMovies() {
+  console.log('tablica z filmami');
+  console.log(watchedVideosArray);
   let url = '';
+
   if (typeOfAPI === 'start') {
     url = urlStart;
-    currentMoviesArray = moviesArray; //to ma być przypisanie referencji -
   }
   if (typeOfAPI === 'search') {
     url = `${urlSearch}?page=1&query=${textToSearch}`;
-    currentMoviesArray = moviesArray; //to ma być przypisanie referencji -
   }
   if (typeOfAPI === 'watched') {
-    currentMoviesArray = watchedArray; //to ma być przypisanie referencji -
   }
   if (typeOfAPI === 'queue') {
-    currentMoviesArray = myVideosArray; //to ma być przypisanie referencji -
   }
 
   //pobierz dane jeśli typeOfAPI === 'start' lub 'search' - w przeciwnym razie dane pobieraj z tablic
+  // debugger;
+  Notiflix.Notify.info(`API: ${typeOfAPI}`);
   if (typeOfAPI === 'start' || typeOfAPI === 'search') {
     fetch(url, options)
       .then(res => res.json())
@@ -118,6 +129,9 @@ export function getStartMovies() {
   } else {
     // typeOfAPI === 'watched' lub 'queue'
     // wystarczu odświeżyć paginację - dane będą pobierane z tablicy:
+    moviesArray = [];
+    moviesArray = [...watchedVideosArray];
+
     paginationInit();
   }
 }
@@ -187,7 +201,7 @@ export function paginationInit() {
     // pageClassName: 'emptyClass.css',
     // prevClassName: 'emptyClass.css',
     // nextClassName: 'emptyClass.css',
-    dataSource: currentMoviesArray,
+    dataSource: moviesArray,
     pageSize: moviesPerPage,
     pageRange: 1,
     hideFirstOnEllipsisShow: true,
@@ -274,24 +288,27 @@ function template(data) {
 const formEl = document.querySelector('.header__form');
 const inputEl = document.querySelector('.header__form__input');
 
-formEl.addEventListener('submit', e => {
-  //sprawdź, czy w polu search nie ma tylko spacji...
-  // debugger;
+// sprawdź czy jesteś w /index.html - na stronie /library nie ma okienka wyszukiwania, więć bedzie błąd!!!!
+// debugger;
+if (typeOfAPI === 'start' || typeOfAPI === 'search') {
+  formEl.addEventListener('submit', e => {
+    //sprawdź, czy w polu search nie ma tylko spacji...
+    // Notiflix.Notify.failure('P2lease enter a search query for the movie');
 
-  // Notiflix.Notify.failure('P2lease enter a search query for the movie');
+    e.preventDefault();
 
-  e.preventDefault();
-  // debugger;
-  // wyczyść tablicę filmów:
-  // debugger;
-  moviesArray = [];
-  // ustaw zmienną rodzaj API
-  typeOfAPI = 'search';
-  // ustaw zmienną do szukania po słowie
-  textToSearch = inputEl.value.trim();
-  // wyświetl galerię z wynikami szukania:
-  getStartMovies();
-});
+    // wyczyść tablicę filmów:
+    moviesArray = [];
+    // ustaw zmienną rodzaj API
+    typeOfAPI = 'search';
+    localStorage.setItem('typeOfAPI', 'search');
+    // debugger;
+    // ustaw zmienną do szukania po słowie
+    textToSearch = inputEl.value.trim();
+    // wyświetl galerię z wynikami szukania:
+    getStartMovies();
+  });
+}
 
 // *********************************************** KOD DLA MODALA ZE SZCZEGÓŁAMI ***********************************
 //słuchanie czy klknie w film:

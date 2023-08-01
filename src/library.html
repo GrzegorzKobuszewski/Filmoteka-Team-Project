@@ -33,7 +33,7 @@
     <div class="content">
       <include src="./partials/header_library.html"></include>
       <include src="./partials/modal.html"></include>
-      <include src="./partials/galerry_library.html"></include>
+      <include src="./partials/gallery_library.html"></include>
       <include src="./partials/pagination.html"></include>
       <include src="./partials/footer.html"></include>
       <include src="./partials/footer_modal.html"></include>
@@ -41,6 +41,13 @@
     </div>
 
     <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
+
+    <!-- ten skrypt library.js musi być pierwszy -->
+    <script>
+      localStorage.setItem('typeOfAPI', 'library');
+    </script>
+
     <script src="./index.js" type="module"></script>
+    <script src="./js/libraryMyVideo.js" type="module"></script>
   </body>
 </html>
