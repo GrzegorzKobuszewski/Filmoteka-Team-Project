@@ -209,12 +209,16 @@ export function paginationInit() {
     autoHideNext: true,
     autoHidePrevious: true,
     showPageNumbers: true,
-    showNavigator: false,
+
+    position: 'top',
     // prevText: 'prev',
     // nextText: 'next',
     showGoInput: true,
     formatGoInput:
-      '<input type= "number" class= "J-paginationjs-go-pagenumber" placeholder="wpisz numer strony" min="1" max="1000" >',
+      '<input type= "number" class= "J-paginationjs-go-pagenumber" placeholder="page" min="1" max="1000" >',
+    showNavigator: true,
+    // formatNavigator: '<%= rangeStart %>-<%= rangeEnd %> z <%= totalNumber %> filmów',
+    formatNavigator: 'total pages: <%= totalPage %>',
     // beforeGoInputOnEnter: ,
     beforePaging: function (param) {
       let page = 1;
