@@ -14,7 +14,7 @@ export function openModal() {
 
   modal.style.display = 'flex';
 
-  //teraz, gdy istnieje już modal, implementuję słuchanie:
+  //teraz, gdy istnieje już modal, implementuję słuchanie przycisku
   const modalEl = document.querySelector('.modalButton');
   console.log(modalEl);
 

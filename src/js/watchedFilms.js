@@ -3,8 +3,9 @@
 import Notiflix from 'notiflix';
 import { fetchMovieById } from './api.js';
 import { getStartMovies } from './pagination.js';
+import { inQueueArray } from './filmsInQueue.js';
 
-Notiflix.Notify.failure(`test!!!`);
+// Notiflix.Notify.failure(`test!!!`);
 
 //Definicja funkcji: słuchanie czy kliknie w WatchedBtn
 // tą definicję musiałem przenieść na moment, w którym modal istnieje!
@@ -37,7 +38,7 @@ Notiflix.Notify.failure(`test!!!`);
 
 export let localStorageWatchedFilms = JSON.parse(localStorage.getItem('watchedFilms'));
 // debugger;
-console.log(localStorageWatchedFilms);
+// console.log(localStorageWatchedFilms);
 if (localStorageWatchedFilms === null || localStorageWatchedFilms.length === 0) {
   localStorage.setItem('watchedFilms', JSON.stringify(['298618']));
 }
@@ -49,8 +50,9 @@ const watchedVideosArray = []; //do tej tablicy bedę wczytywać filmy ze szczeg
 for (let i = 1; i <= watchedIdArray.length; i++) {
   watchedVideosArray.push(i);
 }
-let filmDetails;
-async function renderFilmDetails(arr) {
+
+export async function renderFilmDetails(arr, typeOfLirary) {
+  let filmDetails;
   // iteruj po tablicy ID ków
 
   for (let i = 0; i < arr.length; i++) {
@@ -78,21 +80,37 @@ async function renderFilmDetails(arr) {
     }
 
     // debugger;
-    watchedVideosArray[i] = {
-      release: filmDetails.release_date,
-      id: filmDetails.id,
-      poster: filmDetails.poster_path,
-      title: filmDetails.title,
-      genre: filmDetails.genres[0].name,
-      vote: filmDetails.vote_average.toFixed(2),
-    };
+    // jeśli pobieramy filmy WATCHED
+    if (typeOfLirary === 'watched') {
+      watchedVideosArray[i] = {
+        release: filmDetails.release_date,
+        id: filmDetails.id,
+        poster: filmDetails.poster_path,
+        title: filmDetails.title,
+        genre: filmDetails.genres[0].name,
+        vote: filmDetails.vote_average.toFixed(2),
+      };
+    } else {
+      //QUEUE
+      inQueueArray[i] = {
+        release: filmDetails.release_date,
+        id: filmDetails.id,
+        poster: filmDetails.poster_path,
+        title: filmDetails.title,
+        genre: filmDetails.genres[0].name,
+        vote: filmDetails.vote_average.toFixed(2),
+      };
+    }
   }
   // debugger;
-  localStorage.setItem('typeOfAPI', 'watched');
+  // localStorage.setItem('typeOfAPI', 'watched');
   // debugger;
   getStartMovies();
 }
-
+console.log('tablica watched:');
 console.log(watchedVideosArray);
-console.log(renderFilmDetails(watchedIdArray));
+console.log('tablica queue:');
+console.log(inQueueArray);
+console.log(renderFilmDetails(watchedIdArray, 'watched'));
 export { watchedVideosArray };
+export { inQueueArray };
