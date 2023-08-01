@@ -45,13 +45,14 @@
     text-align: center;
     font-family: $main-font;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
   }
   &__card {
+    flex-basis: calc((100% - 5px) / 2);
     align-items: center;
     justify-content: center;
   }
@@ -75,7 +76,8 @@
     margin: 0 auto;
     display: block;
     width: 100%;
-    max-width: 160px;
+    min-width: 50px;
+    max-width: 75px;
     border-radius: 50%;
     box-shadow: 1px 0px 32px -10px rgba(255, 107, 8, 1);
   }
@@ -85,15 +87,15 @@
   .authors {
     &__gallery {
       flex-direction: row;
-      gap: 25px;
+      gap: 10px;
     }
     &__card {
-      flex-basis: calc((100% - 25px) / 2);
+      flex-basis: calc((100% - 20px) / 3);
     }
     &__image {
       width: 100%;
-      min-width: 160px;
-      max-width: 180px;
+      min-width: 85px;
+      max-width: 100px;
     }
   }
 }
@@ -102,15 +104,15 @@
   .authors {
     &__gallery {
       flex-direction: row;
-      gap: 25px;
+      gap: 10px;
     }
     &__card {
-      flex-basis: calc((100% - 50px) / 3);
+      flex-basis: calc((100% - 40px) / 5);
     }
     &__image {
       width: 100%;
-      min-width: 200px;
-      max-width: 300px;
+      min-width: 100px;
+      max-width: 150px;
     }
   }
 }

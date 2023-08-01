@@ -215,10 +215,9 @@ export function paginationInit() {
     // nextText: 'next',
     showGoInput: true,
     formatGoInput:
-      '<input type= "number" class= "J-paginationjs-go-pagenumber" placeholder="page" min="1" max="1000" >',
-    showNavigator: true,
-    // formatNavigator: '<%= rangeStart %>-<%= rangeEnd %> z <%= totalNumber %> filmów',
-    formatNavigator: 'total pages: <%= totalPage %>',
+      '<input type= "number" class= "J-paginationjs-go-pagenumber" placeholder="find page in total <%= totalPage %>" min="1" max="1000" >',
+    // showNavigator: true,
+    // formatNavigator: 'total pages: <%= totalPage %>',
     // beforeGoInputOnEnter: ,
     beforePaging: function (param) {
       let page = 1;
