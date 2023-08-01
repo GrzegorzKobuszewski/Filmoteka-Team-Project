@@ -70,10 +70,16 @@ async function renderFilmDetails(arr) {
     if (filmDetails.genres.length === 0) {
       filmDetails.genres.push({ name: 'noname' });
     }
+    //poprawka na rok
+    if (filmDetails.release_date === null) {
+      filmDetails.release_date = '1990';
+    } else {
+      filmDetails.release_date = filmDetails.release_date.slice(0, 4);
+    }
 
     // debugger;
     watchedVideosArray[i] = {
-      year: filmDetails.release_date,
+      release: filmDetails.release_date,
       id: filmDetails.id,
       poster: filmDetails.poster_path,
       title: filmDetails.title,
