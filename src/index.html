@@ -40,6 +40,10 @@
     <include src="./partials/components.html"></include>
 
     <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
+    <script>
+      localStorage.setItem('typeOfAPI', 'start');
+    </script>
+
     <script src="./index.js" type="module"></script>
     <script src="./js/movieSearch.js" type="module"></script>
     <script>
