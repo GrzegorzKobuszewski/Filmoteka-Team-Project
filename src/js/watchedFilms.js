@@ -107,10 +107,11 @@ export async function renderFilmDetails(arr, typeOfLirary) {
   // debugger;
   getStartMovies();
 }
-console.log('tablica watched:');
-console.log(watchedVideosArray);
-console.log('tablica queue:');
-console.log(inQueueArray);
-console.log(renderFilmDetails(watchedIdArray, 'watched'));
+// console.log('tablica watched:');
+// console.log(watchedVideosArray);
+// console.log('tablica queue:');
+// console.log(inQueueArray);
+
+renderFilmDetails(watchedIdArray, 'watched');
 export { watchedVideosArray };
 export { inQueueArray };

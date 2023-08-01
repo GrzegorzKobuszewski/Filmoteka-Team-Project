@@ -21,7 +21,7 @@ headerLibrary.addEventListener('click', event => {
 });
 
 function showWatched() {
-  Notiflix.Notify.success('już pokazuję Watches');
+  Notiflix.Notify.success('już pokazuję Watched...');
   typeOfAPI = 'watched';
   localStorage.setItem('typeOfAPI', 'watched');
   // debugger;
@@ -29,7 +29,7 @@ function showWatched() {
 }
 
 function showQueue() {
-  Notiflix.Notify.success('już pokazuję Queue');
+  Notiflix.Notify.success('już pokazuję Queue...');
   typeOfAPI = 'queue';
   localStorage.setItem('typeOfAPI', 'queue');
   // debugger;

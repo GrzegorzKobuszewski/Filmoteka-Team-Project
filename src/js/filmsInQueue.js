@@ -17,6 +17,7 @@ for (let i = 1; i <= queueIdArray.length; i++) {
 renderFilmDetails(queueIdArray, 'queue');
 // debugger;
 export { inQueueArray };
+export { localStorageInQueue };
 
 // //słuchanie czy kliknie w WatchedBtn:
 // async function handleInQueueBtnClick(event) {

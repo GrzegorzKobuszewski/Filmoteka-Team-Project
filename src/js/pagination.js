@@ -84,7 +84,7 @@ export function getStartMovies() {
 
   //pobierz dane jeśli typeOfAPI === 'start' lub 'search' - w przeciwnym razie dane pobieraj z tablic
   // debugger;
-  Notiflix.Notify.info(`API: ${typeOfAPI}`);
+  // Notiflix.Notify.info(`API: ${typeOfAPI}`);
   if (typeOfAPI === 'start' || typeOfAPI === 'search') {
     fetch(url, options)
       .then(res => res.json())
