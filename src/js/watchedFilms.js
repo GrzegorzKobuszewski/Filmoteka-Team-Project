@@ -36,8 +36,10 @@ Notiflix.Notify.failure(`test!!!`);
 // dane
 
 export let localStorageWatchedFilms = JSON.parse(localStorage.getItem('watchedFilms'));
-if (localStorageWatchedFilms === null) {
-  localStorage.setItem('watchedFilms', JSON.stringify([]));
+// debugger;
+console.log(localStorageWatchedFilms);
+if (localStorageWatchedFilms === null || localStorageWatchedFilms.length === 0) {
+  localStorage.setItem('watchedFilms', JSON.stringify(['298618']));
 }
 
 // Tablica obejrzanych filmów
