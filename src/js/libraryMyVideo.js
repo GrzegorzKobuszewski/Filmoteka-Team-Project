@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
-import { typeOfAPI } from './pagination';
-import { watchedArray } from './watchedFilms';
-import { getStartMovies } from './pagination';
+import { typeOfAPI } from './pagination.js';
+import { watchedArray } from './watchedFilms.js';
+import { getStartMovies } from './pagination.js';
 
 // debugger;
 //typeOfAPI = 'library';

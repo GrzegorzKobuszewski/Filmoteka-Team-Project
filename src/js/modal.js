@@ -17,7 +17,7 @@ export function openModal() {
 
   //teraz, gdy istnieje już modal, implementuję słuchanie przycisku
   const modalEl = document.querySelector('.modalButton');
-  console.log(modalEl);
+  // console.log(modalEl);
 
   modalEl.addEventListener('click', event => {
     if (event.target.classList.contains('watched-btn-modal')) {

@@ -29,7 +29,7 @@ let loadingFirstPage = true;
 
 ///zapisz typeOfAPI do locale localStorage
 
-let typeOfAPI;
+export let typeOfAPI;
 // debugger;
 typeOfAPI = localStorage.getItem('typeOfAPI');
 if (typeOfAPI === null) {
@@ -107,7 +107,7 @@ export function getStartMovies() {
           moviesArray.push(i);
         }
 
-        console.log(json.results);
+        // console.log(json.results);
 
         for (let i = 1; i <= totalResults && i <= 20; i++) {
           // Zamień gatunki ID na stringi:
@@ -238,10 +238,10 @@ export function paginationInit() {
       let page = 1;
       if ((param * moviesPerPage) % 20 === 0) {
         page = Math.floor((param * moviesPerPage) / 20);
-        console.log(`page: ${page}`);
+        // console.log(`page: ${page}`);
       } else {
         page = Math.floor((param * moviesPerPage) / 20) + 1;
-        console.log(`page: ${page}`);
+        // console.log(`page: ${page}`);
       }
 
       if (page > 1) {
@@ -337,12 +337,12 @@ async function handleMovieImageClick(event) {
   if (movieCard) {
     // Pobieramy numer id filmu z atrybutu id elementu <li>
     const movieId = movieCard.id;
-    console.log('Numer id filmu:', movieId);
+    // console.log('Numer id filmu:', movieId);
     // Notiflix.Notify.info(`Numer id filmu: ${movieId}`);
 
     //poczekaj aż skończy pobierać!!!
     videoDetails = await fetchMovieById(movieId);
-    console.log(videoDetails);
+    // console.log(videoDetails);
 
     //poprawka dla przypadku, w którym nie istnieje w bazie gataunkek
     // debugger;
