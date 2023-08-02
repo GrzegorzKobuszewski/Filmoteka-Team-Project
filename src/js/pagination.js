@@ -4,6 +4,7 @@ import Notiflix from 'notiflix';
 import { fetchMovieById } from './api.js';
 import { openModal } from './modal';
 import { watchedVideosArray } from './watchedFilms.js';
+import { inQueueArray } from './filmsInQueue.js';
 export let html = '';
 const urlSearch = 'https://api.themoviedb.org/3/search/movie';
 const urlStart = 'https://api.themoviedb.org/3/movie/popular';
@@ -61,8 +62,13 @@ const genresArray = [
 
 // pobierz totale i stwórz tablicę pustych obiektów przy starcie strony
 export function getStartMovies() {
-  //console.log('tablica z filmami');
-  //console.log(watchedVideosArray);
+  //sprawdź w locale storage wartość typeOfAPI
+  typeOfAPI = localStorage.getItem('typeOfAPI');
+  if (typeOfAPI === null) {
+    localStorage.setItem('typeOfAPI', 'start');
+    typeOfAPI = 'start';
+  } // start, search, watched, queue}
+
   let url = '';
 
   if (typeOfAPI === 'start') {
@@ -78,7 +84,7 @@ export function getStartMovies() {
 
   //pobierz dane jeśli typeOfAPI === 'start' lub 'search' - w przeciwnym razie dane pobieraj z tablic
   // debugger;
-  Notiflix.Notify.info(`API: ${typeOfAPI}`);
+  // Notiflix.Notify.info(`API: ${typeOfAPI}`);
   if (typeOfAPI === 'start' || typeOfAPI === 'search') {
     fetch(url, options)
       .then(res => res.json())
@@ -130,7 +136,16 @@ export function getStartMovies() {
     // typeOfAPI === 'watched' lub 'queue'
     // wystarczu odświeżyć paginację - dane będą pobierane z tablicy:
     moviesArray = [];
-    moviesArray = [...watchedVideosArray];
+    // debugger;
+    if (typeOfAPI === 'watched') {
+      moviesArray = [...watchedVideosArray];
+    }
+    if (typeOfAPI === 'queue') {
+      moviesArray = [...inQueueArray];
+    }
+    if (typeOfAPI === 'library') {
+      moviesArray = [];
+    }
 
     paginationInit();
   }

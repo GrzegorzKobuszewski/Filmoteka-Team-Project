@@ -1,10 +1,23 @@
-// import Notiflix from 'notiflix';
-// import { renderFilmDetails } from './watchedFilms';
+import Notiflix from 'notiflix';
+import { renderFilmDetails } from './watchedFilms';
 
-// let localStorageInQueue = JSON.parse(localStorage.getItem('filmsInQueue'));
-// if (localStorageInQueue === null) {
-//   localStorage.setItem('filmsInQueue', JSON.stringify([]));
-// }
+// debugger;
+let localStorageInQueue = JSON.parse(localStorage.getItem('filmsInQueue'));
+if (localStorageInQueue === null || localStorageInQueue.length === 0) {
+  localStorage.setItem('filmsInQueue', JSON.stringify(['298618']));
+}
+
+// Tablica obejrzanych filmów
+const queueIdArray = JSON.parse(localStorage.getItem('filmsInQueue'));
+const inQueueArray = []; //do tej tablicy bedę wczytywać filmy ze szczegółami
+
+for (let i = 1; i <= queueIdArray.length; i++) {
+  inQueueArray.push(i);
+}
+renderFilmDetails(queueIdArray, 'queue');
+// debugger;
+export { inQueueArray };
+export { localStorageInQueue };
 
 // //słuchanie czy kliknie w WatchedBtn:
 // async function handleInQueueBtnClick(event) {
@@ -29,6 +42,6 @@
 //   }
 // });
 // // filmy w kolejce
-// export let inQueueArray = JSON.parse(localStorage.getItem('filmsInQueue'));
+
 // // console.log(inQueueArray);
 // // renderFilmDetails(inQueueArray);
